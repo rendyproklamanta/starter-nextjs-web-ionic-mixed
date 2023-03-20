@@ -44,7 +44,7 @@ const Settings = () => {
             />
           </IonItem>
           <IonItem>
-               <IonLabel onClick={ () => router.push('/pagetwo', 'forward') }>Goto page 2</IonLabel>
+               <IonLabel onClick={ () => router.push('/app/pagetwo', 'forward') }>Goto page 2</IonLabel>
           </IonItem>
         </IonList>
       </IonContent>

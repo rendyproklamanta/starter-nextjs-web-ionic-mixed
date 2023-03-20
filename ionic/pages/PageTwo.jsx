@@ -7,7 +7,7 @@ const PageTwo = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-          <IonBackButton defaultHref="/tabs/settings" />
+          <IonBackButton defaultHref="/app/tabs/settings" />
           </IonButtons>
           <IonTitle>Back Button</IonTitle>
         </IonToolbar>

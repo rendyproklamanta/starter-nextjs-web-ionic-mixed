@@ -45,7 +45,7 @@ const ListDetail = ({ match }) => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/tabs/lists" />
+            <IonBackButton defaultHref="/app/tabs/lists" />
           </IonButtons>
           <IonTitle>{loadedList.name}</IonTitle>
         </IonToolbar>
