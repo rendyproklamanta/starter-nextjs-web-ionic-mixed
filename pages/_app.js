@@ -1,34 +1,33 @@
-import Head from 'next/head';
-import { isMobile } from 'react-device-detect';
 import Layout from '../layouts/Layout';
 import { isCapacitor } from '../constants';
-
 import 'animate.css';
-import 'tailwindcss/tailwind.css';
-import '../styles/global.css';
-import '../styles/variables.css';
 
 const capacitor = isCapacitor;
 
-function MyApp({ Component, pageProps }) {
-  
-   return (
-      <>
-         <Head>
-            <meta
-               name="viewport"
-               content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-            ></meta>
-         </Head>
+if (capacitor) {
+   require('tailwindcss/tailwind.css');
+   require('../styles/global.css');
+   require('../styles/variables.css');
+} else {
+   require('../styles/theme.bs.css');
+}
 
-         {capacitor ? <Component {...pageProps} /> : 
+function MyApp({ Component, pageProps }) {
+   if (capacitor) {
+      return (
+         <Component {...pageProps} />
+      );
+   } else {
+      return (
+         <>
             <Layout>
                <Component {...pageProps} />
             </Layout>
-         }
+         </>
+      );
+   }
 
-      </>
-   );
+
 }
 
 export default MyApp;

@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import { isMobile } from 'react-device-detect';
 import Home from './home';
 import { isCapacitor } from '../constants';
 

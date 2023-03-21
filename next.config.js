@@ -1,14 +1,20 @@
-const withTM = require('next-transpile-modules')([
-  '@ionic/react',
-  '@ionic/core',
-  '@stencil/core',
-  'ionicons',
-]);
+const nextConfig = {
+   basePath: '',
+   reactStrictMode: true,
+   images: {
+      unoptimized: true,
+      domains: [
+         'images.unsplash.com',
+         'ionicframework.com'
+      ],
+   },
+   swcMinify: true,
+   transpilePackages: [
+      '@ionic/react', 
+      '@ionic/core', 
+      '@stencil/core', 
+      'ionicons'
+   ],
+};
 
-module.exports = withTM({
-  basePath: '',
-  images: {
-    domains: ['images.unsplash.com'],
-  },
-  swcMinify: true,
-});
+module.exports = nextConfig;
