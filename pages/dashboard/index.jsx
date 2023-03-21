@@ -1,6 +1,6 @@
 import React from 'react'
 
-const System = () => {
+const Dashboard = () => {
    return (
       <>
          <div className="container mt-3 mb-5">
@@ -31,4 +31,4 @@ const System = () => {
    )
 }
 
-export default System
+export default Dashboard

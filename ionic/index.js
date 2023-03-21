@@ -24,7 +24,6 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import PageNotFound from '../pages/404';
 
 setupIonicReact({});
 

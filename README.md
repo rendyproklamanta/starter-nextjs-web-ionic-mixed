@@ -1,12 +1,17 @@
 # Next.js + Tailwind CSS + Ionic Framework + Capacitor Mobile Starter
 
-![Screenshot](./screenshot.png)
+### - Running on Device
+![Screenshot](./public/screenshot.png)
+
+### - Running on Browser
+![Screenshot](./public/ionic-web.PNG)
+
+### - Running nextjs-web based
+![Screenshot](./public/nextjs-web.PNG)
 
 This repo is a conceptual starting point for building an iOS, Android, and Progressive Web App with Next.js, Tailwind CSS, [Ionic Framework](https://ionicframework.com/), and [Capacitor](https://capacitorjs.com/).
 
 Next.js handles the production React app experience, Tailwind can be used to style each page of your app, Ionic Framework provides the cross-platform system controls (navigation/transitions/tabs/etc.), and then Capacitor bundles all of it up and runs it on iOS, Android, and Web with full native access.
-
-See this blog post for an overview of the stack and how it all works: https://dev.to/ionic/build-mobile-apps-with-tailwind-css-next-js-ionic-framework-and-capacitor-3kij
 
 ## Usage
 
@@ -29,7 +34,7 @@ Finally, to run the app, use Capacitor 3 new awesome run command:
 
 ```
 npx cap run ios
-npx cap run android
+npx cap open android
 ```
 
 ## Livereload/Instant Refresh
@@ -43,23 +48,3 @@ To enable Livereload and Instant Refresh during development (when running `npm r
   }
 }
 ```
-
-Note: this configuration wil be easier in Capacitor 3 which [recently went into beta](https://capacitorjs.com/blog/announcing-capacitor-3-0-beta).
-
-## API Routes
-
-API Routes can be used but some minimal configuration is required. See [this discussion](https://github.com/mlynch/nextjs-tailwind-ionic-capacitor-starter/issues/4#issuecomment-754030049) for more information.
-
-## Caveats
-
-One caveat with this project: Because the app must be able to run purely client-side and use [Next.js's Export command](https://nextjs.org/docs/advanced-features/static-html-export), that means no Server Side Rendering in this code base. There is likely a way to SSR and a fully static Next.js app in tandem but it requires [a Babel plugin](https://github.com/erzr/next-babel-conditional-ssg-ssr) or would involve a more elaborate monorepo setup with code sharing that is out of scope for this project.
-
-Additionally, Next.js routing is not really used much in this app beyond a catch-all route to render the native app shell and engage the Ionic React Router. This is primarily because Next.js routing is not set up to enable native-style transitions and history state management like the kind Ionic uses. 
-
-## What is Capacitor?
-
-You can think of [Capacitor](https://capacitorjs.com/) as a sort of "electron for mobile" that runs standard web apps on iOS, Android, Desktop, and Web.
-
-Capacitor provides access to Native APIs and a plugin system for building any native functionality your app needs.
-
-Capacitor apps can also run in the browser as a Progressive Web App with the same code.

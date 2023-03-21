@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const Dashboard = () => {
+const Home = () => {
    return (
       <>
          <div data-aos="fade">
@@ -166,7 +166,8 @@ const Dashboard = () => {
                </div>
             </div>
          </div>
-         <div className="container-fluid px-vw-5 position-relative" data-aos="fade">
+
+         <div className="container-fluid px-vw-5 position-relative mb-5" data-aos="fade">
             <div className="position-absolute w-100 h-50 bg-black top-0 start-0" />
             <div className="position-relative py-vh-5 bg-cover bg-center rounded-5" style={{ backgroundImage: 'url(/img/abstract12.webp)' }}>
                <div className="container bg-black px-vw-5 py-vh-3 rounded-5 shadow">
@@ -185,6 +186,7 @@ const Dashboard = () => {
                            </div>
                         </div>
                      </div>
+
                      <div className="col-5 offset-1">
                         <span className="h5 text-secondary fw-lighter">The numbers</span>
                         <h2 className="display-huge fw-bolder" data-aos="zoom-in-left">+400</h2>
@@ -309,4 +311,4 @@ const Dashboard = () => {
    )
 }
 
-export default Dashboard
+export default Home

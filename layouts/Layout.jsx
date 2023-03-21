@@ -5,14 +5,13 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const Layout = ({ children }) => {
-   
+
    useEffect(() => {
       AOS.init({
          delay: 400,
          duration: 800,
       });
    }, [])
-   
 
    return (
       <>

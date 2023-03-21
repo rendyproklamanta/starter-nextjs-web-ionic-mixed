@@ -1,1 +1,1 @@
-export const isCapacitor = false;
+export const isCapacitor = true;

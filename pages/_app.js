@@ -13,6 +13,7 @@ if (capacitor) {
 }
 
 function MyApp({ Component, pageProps }) {
+   
    if (capacitor) {
       return (
          <Component {...pageProps} />
