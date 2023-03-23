@@ -15,18 +15,23 @@ const Navbar = () => {
                </a> */}
                <ul className="navbar-nav mx-auto mb-2 mb-lg-0 list-group list-group-horizontal">
                   <li className="nav-item">
-                     <Link href="/" className="nav-link fs-5">
+                     <Link href="/" className="nav-link fs-6">
                         Home
                      </Link>
                   </li>
                   <li className="nav-item">
-                     <Link href="/content" className="nav-link fs-5">
+                     <Link href="/content" className="nav-link fs-6">
                         Content
                      </Link>
                   </li>
                   <li className="nav-item">
-                     <Link href="/dashboard" className="nav-link fs-5">
+                     <Link href="/dashboard" className="nav-link fs-6">
                         Dashboard
+                     </Link>
+                  </li>
+                  <li className="nav-item">
+                     <Link href="/pokemon/ssr" className="nav-link fs-6">
+                        Redux
                      </Link>
                   </li>
                </ul>
