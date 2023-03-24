@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { isCapacitor } from '../constants';
+import { isCapacitor } from '../utils/capacitor';
 import Home from './home';
 
 const Ionic = dynamic(() => import('../ionic'), {

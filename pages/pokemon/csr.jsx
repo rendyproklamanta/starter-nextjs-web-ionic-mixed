@@ -5,16 +5,13 @@ import Link from 'next/link';
 
 const Csr = () => {
    const result = useGetPokemonListQuery();
-   const { isLoading, data } = result;
+   let { isLoading, data } = result;
+   
+   // data = data.results.slice().sort(() => 0.5 - Math.random());
 
    if (isLoading) {
       return ('Loading...');
    }
-
-   let shuffledArray = data.results.sort(() => 0.5 - Math.random());
-
-
-   console.log(shuffledArray);
 
    return (
       <>
@@ -35,7 +32,7 @@ const Csr = () => {
                         </button>
 
                         <ul>
-                           {shuffledArray.map((res, i) => (
+                           {data.results.map((res, i) => (
                               <li key={i}>{res.name}</li>
                            ))}
                         </ul>

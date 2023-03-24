@@ -1,5 +1,5 @@
 import Layout from '../layouts/Layout';
-import { isCapacitor } from '../constants';
+import { isCapacitor } from '../utils/capacitor';
 import 'animate.css';
 import { wrapper } from '../store/store';
 import { Provider } from 'react-redux';
@@ -9,11 +9,11 @@ import { persistStore } from 'redux-persist';
 const capacitor = isCapacitor;
 
 if (capacitor) {
-   require('tailwindcss/tailwind.css');
-   require('../styles/global.css');
-   require('../styles/variables.css');
+   import('tailwindcss/tailwind.css');
+   import('../styles/global.css');
+   import('../styles/variables.css');
 } else {
-   require('../styles/theme.bs.css');
+   import('../styles/theme.bs.css');
 }
 
 function MyApp({ Component, ...rest }) {
@@ -24,14 +24,14 @@ function MyApp({ Component, ...rest }) {
    return (
       <>
          <Provider store={store}>
-            <PersistGate loading={'Loading...'} persistor={persistor}>
-               {capacitor ?
+            <PersistGate loading={process.env.NODE_ENV === 'development' ? 'Loading Persistor...' : false} persistor={persistor}>
+            {capacitor ?
+               <Component {...pageProps} />
+               :
+               <Layout>
                   <Component {...pageProps} />
-                  :
-                  <Layout>
-                     <Component {...pageProps} />
-                  </Layout>
-               }
+               </Layout>
+            }
             </PersistGate>
          </Provider>
       </>

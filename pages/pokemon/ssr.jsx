@@ -2,12 +2,11 @@ import Link from "next/link";
 import Counter from "../../components/Counter";
 import { getPokemonList } from "../../store/query/pokemonApi";
 import { wrapper } from "../../store/store";
-
+import { shuffle } from "lodash";
 
 const Ssr = ({ res }) => {
-   // const result = useGetPokemonListQuery();
-   // const { data } = result;
-   const { isLoading, data } = res;
+   let { isLoading, data } = res;
+   // data = data.results.slice().sort(() => 0.5 - Math.random());
 
    if (isLoading) {
       return (<>Loading..</>);
@@ -32,7 +31,7 @@ const Ssr = ({ res }) => {
                         </button>
 
                         <ul>
-                           {data.results.map((res, i) => (
+                           {shuffle(data.results).map((res, i) => (
                               <li key={i}>{res.name}</li>
                            ))}
                         </ul>

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import Navbar from './Navbar'
-import Footer from './Footer'
+import React, { useEffect } from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
          delay: 400,
          duration: 800,
       });
-   }, [])
+   }, []);
 
    return (
       <>
@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
          <Footer />
       </>
 
-   )
-}
+   );
+};
 
-export default Layout
+export default Layout;

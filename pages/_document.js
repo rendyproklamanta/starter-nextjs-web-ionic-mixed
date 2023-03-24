@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document';
-import { isCapacitor } from '../constants';
+import { isCapacitor } from '../utils/capacitor';
 
 export default function Document() {
   const capacitor = isCapacitor;
