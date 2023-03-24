@@ -1,0 +1,10 @@
+{
+   "search.exclude": {
+      "android": true,
+      "ios": true,
+      "Pods": true,
+      "node_modules": true,
+      ".next": true,
+      "out": true,
+   }
+}

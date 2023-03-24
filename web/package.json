@@ -1,0 +1,29 @@
+{
+  "name": "nextjs-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "devwithtw": "concurrently \"next dev --turbo\" \"tailwindcss -i ./src/styles/globals.css -o ./src/styles/dist.css -w\"",
+    "dev": "next dev --turbo",
+    "prebuild": "tailwindcss -m -i ./src/styles/globals.scss -o ./src/styles/dist.css",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/codemod": "^13.2.4",
+    "aos": "^2.3.4",
+    "next": "^13.2.5-canary.15",
+    "next-sitemap": "^4.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-gtm-module": "^2.0.11",
+    "sass": "^1.60.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "eslint": "latest",
+    "eslint-config-next": "latest"
+  }
+}
