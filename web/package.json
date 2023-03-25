@@ -5,7 +5,7 @@
   "scripts": {
     "devwithtw": "concurrently \"next dev --turbo\" \"tailwindcss -i ./src/styles/globals.css -o ./src/styles/dist.css -w\"",
     "dev": "next dev --turbo",
-    "prebuild": "tailwindcss -m -i ./src/styles/globals.scss -o ./src/styles/dist.css",
+    "prebuild-old": "tailwindcss -m -i ./src/styles/globals.scss -o ./src/styles/dist.css",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
@@ -22,7 +22,8 @@
     "react-gtm-module": "^2.0.11",
     "react-redux": "^8.0.5",
     "redux-persist": "^6.0.0",
-    "sass": "^1.60.0"
+    "sass": "^1.60.0",
+    "sharp": "^0.32.0"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",
