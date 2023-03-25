@@ -5,13 +5,13 @@ import Aos from 'aos';
 import Layout from '../components/layout';
 import { wrapper } from '../store/store';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { persistStore } from 'redux-persist';
+// import { PersistGate } from 'redux-persist/integration/react';
+// import { persistStore } from 'redux-persist';
 
 function MyApp({ Component, ...rest }) {
    const { store, props } = wrapper.useWrappedStore(rest);
    const { pageProps } = props;
-   const persistor = persistStore(store);
+   // const persistor = persistStore(store);
 
    useEffect(() => {
       if (process.env.NODE_ENV === 'production') {
@@ -26,11 +26,11 @@ function MyApp({ Component, ...rest }) {
    return (
       <>
          <Provider store={store}>
-            <PersistGate loading={process.env.NODE_ENV === 'development' ? 'Loading Persistor...' : false} persistor={persistor}>
+            {/* <PersistGate loading={process.env.NODE_ENV === 'development' ? 'Loading Persistor...' : false} persistor={persistor}> */}
                <Layout>
-                  <Component {...pageProps} />
+                  <Component {...pageProps} suppressHydrationWarning={true}/>
                </Layout>
-            </PersistGate>
+            {/* </PersistGate> */}
          </Provider>
       </>
    );

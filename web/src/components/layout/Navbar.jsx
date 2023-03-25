@@ -28,7 +28,7 @@ const Navbar = () => {
              </Link>
           </li>
           <li className="nav-item">
-             <Link href="/redux/ssr" className="nav-link fs-6">
+             <Link href="/redux" className="nav-link fs-6">
                 Redux
              </Link>
           </li>

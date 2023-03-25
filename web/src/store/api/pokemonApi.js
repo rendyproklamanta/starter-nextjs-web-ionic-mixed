@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
 
 export const pokemonApi = createApi({
+   reducerPath: 'pokemonApi',
    baseQuery: fetchBaseQuery({
       baseUrl: "https://pokeapi.co/api/v2/",
    }),
@@ -16,7 +17,7 @@ export const pokemonApi = createApi({
          { query: (name) => `pokemon/${name}`, }
       ),
       getPokemonList: builder.query(
-         { query: () => `pokemon/` },
+         { query: ({offset, limit}) => `pokemon/?offset=${offset}&limit=${limit}` },
       ),
    }),
 });

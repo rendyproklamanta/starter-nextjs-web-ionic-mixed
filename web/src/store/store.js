@@ -1,29 +1,31 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
 import counter from './slices/counterSlice';
-import { pokemonApi } from './query/pokemonApi';
-import storage from 'redux-persist/lib/storage';
-import {
-   persistReducer,
-   // FLUSH,
-   // REHYDRATE,
-   // PAUSE,
-   // PERSIST,
-   // PURGE,
-   // REGISTER,
-} from 'redux-persist';
+import { pokemonApi } from './api/pokemonApi';
+import { usersApi } from './api/usersApi';
+// import storage from 'redux-persist/lib/storage';
+// import {
+//    persistReducer,
+//    // FLUSH,
+//    // REHYDRATE,
+//    // PAUSE,
+//    // PERSIST,
+//    // PURGE,
+//    // REGISTER,
+// } from 'redux-persist';
 
 const combinedReducer = combineReducers({
    counter,
    [pokemonApi.reducerPath]: pokemonApi.reducer,
+   [usersApi.reducerPath]: usersApi.reducer,
 });
 
-const persistConfig = {
-   key: 'root',
-   storage,
-};
+// const persistConfig = {
+//    key: 'root',
+//    storage,
+// };
 
-const persistedReducer = persistReducer(persistConfig, combinedReducer);
+// const persistedReducer = persistReducer(persistConfig, combinedReducer);
 
 // const masterReducer = (state, action) => {
 //    if (action.type === HYDRATE) {
@@ -42,7 +44,8 @@ const persistedReducer = persistReducer(persistConfig, combinedReducer);
 export const makeStore = () =>
 
    configureStore({
-      reducer: persistedReducer,
+      reducer: combinedReducer,
+      // reducer: persistedReducer,
       devTools: true,
       middleware: (getDefaultMiddleware) =>
          getDefaultMiddleware({
@@ -52,7 +55,7 @@ export const makeStore = () =>
             //    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             // },
          })
-            .concat(pokemonApi.middleware)
+            .concat([pokemonApi.middleware, usersApi.middleware])
       ,
    });
 

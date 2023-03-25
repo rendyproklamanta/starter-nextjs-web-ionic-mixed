@@ -1,17 +1,14 @@
-import React from 'react';
-import { useGetPokemonListQuery } from '../../store/query/pokemonApi';
+import React, { useState } from 'react';
+import { useGetPokemonListQuery } from '../../store/api/pokemonApi';
 import Counter from '../../components/Counter';
 import Link from 'next/link';
+import { shuffle } from "lodash";
+import { loadCSR } from '../../utils/global';
 
 const Csr = () => {
-   const result = useGetPokemonListQuery();
-   let { isLoading, data } = result;
-   
-   // data = data.results.slice().sort(() => 0.5 - Math.random());
-
-   if (isLoading) {
-      return ('Loading...');
-   }
+   const [page, setPage] = useState(1);
+   const result = useGetPokemonListQuery({ offset: page < 1 ? 1 : page, limit: 10 });
+   const { isFetching, isLoading, data } = result;
 
    return (
       <>
@@ -24,18 +21,26 @@ const Csr = () => {
                         <h2>Test Counter</h2>
                         <Counter />
 
-                        <br/>
+                        <br />
 
                         <h2>Test Redux Toolkit Query</h2>
                         <button>
                            <Link href="/redux/ssr">{'<<'} Go To SSR Mode</Link>
                         </button>
 
-                        <ul>
-                           {data.results.map((res, i) => (
+                        <ul style={{ height: "300px" }}>
+                           {isFetching ? 'Loading...' : data.results.map((res, i) => (
                               <li key={i}>{res.name}</li>
                            ))}
                         </ul>
+
+                        <button onClick={() => setPage((prev) => prev - 1)}>
+                           Prev
+                        </button>
+                        <button onClick={() => setPage((next) => next + 1)}>
+                           Next
+                        </button>
+
                      </div>
                   </div>
                </div>
@@ -45,7 +50,7 @@ const Csr = () => {
       </>
    );
 
-
 };
 
-export default Csr;
+
+export default loadCSR(Csr);

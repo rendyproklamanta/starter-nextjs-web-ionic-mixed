@@ -4,7 +4,9 @@
    },
    "extends": [
       "eslint:recommended",
-      "next"
+      "next",
+      "next/babel",
+      "next/core-web-vitals"
    ],
    "rules": {
       "semi": [

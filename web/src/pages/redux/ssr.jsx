@@ -1,16 +1,18 @@
 import Link from "next/link";
 import Counter from "../../components/Counter";
-import { getPokemonList } from "../../store/query/pokemonApi";
+import { getPokemonList } from "../../store/api/pokemonApi";
 import { wrapper } from "../../store/store";
-import { shuffle } from "lodash";
+import Router, { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const Ssr = ({ res }) => {
-   let { isLoading, data } = res;
-   // data = data.results.slice().sort(() => 0.5 - Math.random());
+   const [page, setPage] = useState(1)
+   const { isFetching, isLoading, data } = res;
 
-   if (isLoading) {
-      return (<>Loading..</>);
-   }
+   useEffect(() => {
+      if (page < 1) setPage(1);
+      Router.push('?page=' + page);
+   }, [page]);
 
    return (
       <>
@@ -31,10 +33,16 @@ const Ssr = ({ res }) => {
                         </button>
 
                         <ul>
-                           {shuffle(data.results).map((res, i) => (
+                           {data.results.map((res, i) => (
                               <li key={i}>{res.name}</li>
                            ))}
                         </ul>
+                        <button onClick={() => setPage((prev) => prev - 1)}>
+                           Prev
+                        </button>
+                        <button onClick={() => setPage((next) => next + 1)}>
+                           Next
+                        </button>
                      </div>
                   </div>
                </div>
@@ -44,9 +52,9 @@ const Ssr = ({ res }) => {
    );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
+export const getServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
    // const result = await store.dispatch(getPokemonByName.initiate('pikachu'));
-   const result = await store.dispatch(getPokemonList.initiate());
+   const result = await store.dispatch(getPokemonList.initiate({ offset: context.query.page, limit: 10 }));
    return { props: { res: result } };
 });
 
