@@ -12,13 +12,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@next/codemod": "^13.2.4",
+    "@reduxjs/toolkit": "^1.9.3",
     "aos": "^2.3.4",
     "next": "^13.2.5-canary.15",
+    "next-redux-wrapper": "^8.1.0",
     "next-sitemap": "^4.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-gtm-module": "^2.0.11",
+    "react-redux": "^8.0.5",
+    "redux-persist": "^6.0.0",
     "sass": "^1.60.0"
   },
   "devDependencies": {

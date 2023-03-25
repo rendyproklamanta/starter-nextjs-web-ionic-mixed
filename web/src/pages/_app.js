@@ -3,25 +3,37 @@ import TagManager from 'react-gtm-module';
 import '../styles/bootstrap.css';
 import Aos from 'aos';
 import Layout from '../components/layout';
+import { wrapper } from '../store/store';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
 
-const MyApp = ({ Component, pageProps }) => {
-  useEffect(() => {
-    if (process.env.NODE_ENV === 'production') {
-      TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID });
-    }
-    Aos.init({
-      delay: 400,
-      duration: 800,
-    });
-  }, []);
+function MyApp({ Component, ...rest }) {
+   const { store, props } = wrapper.useWrappedStore(rest);
+   const { pageProps } = props;
+   const persistor = persistStore(store);
 
-  return (
-    <>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </>
-  );
+   useEffect(() => {
+      if (process.env.NODE_ENV === 'production') {
+         TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_GTM_ID });
+      }
+      Aos.init({
+         delay: 400,
+         duration: 800,
+      });
+   }, []);
+
+   return (
+      <>
+         <Provider store={store}>
+            <PersistGate loading={process.env.NODE_ENV === 'development' ? 'Loading Persistor...' : false} persistor={persistor}>
+               <Layout>
+                  <Component {...pageProps} />
+               </Layout>
+            </PersistGate>
+         </Provider>
+      </>
+   );
 };
 
 export default MyApp;
