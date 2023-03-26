@@ -5,6 +5,8 @@ import Aos from 'aos';
 import Layout from '../components/layout';
 import { wrapper } from '../store/store';
 import { Provider } from 'react-redux';
+import NextNProgress from 'nextjs-progressbar';
+
 // import { PersistGate } from 'redux-persist/integration/react';
 // import { persistStore } from 'redux-persist';
 
@@ -25,11 +27,12 @@ function MyApp({ Component, ...rest }) {
 
    return (
       <>
+         <NextNProgress options={{ showSpinner: false }} />
          <Provider store={store}>
             {/* <PersistGate loading={process.env.NODE_ENV === 'development' ? 'Loading Persistor...' : false} persistor={persistor}> */}
-               <Layout>
-                  <Component {...pageProps} suppressHydrationWarning={true}/>
-               </Layout>
+            <Layout>
+               <Component {...pageProps} suppressHydrationWarning={true} />
+            </Layout>
             {/* </PersistGate> */}
          </Provider>
       </>
