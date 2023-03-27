@@ -37,6 +37,6 @@ function MyApp({ Component, ...rest }) {
          </Provider>
       </>
    );
-};
+}
 
 export default MyApp;

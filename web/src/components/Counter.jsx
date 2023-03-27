@@ -8,29 +8,29 @@ const Counter = () => {
    return (
       <div className='mb-3'>
          <button
-            aria-label="Increment value"
-            onClick={() => dispatch(incrementByAmount(5))}
+            aria-label="Reset value"
+            onClick={() => dispatch(reset())}
          >
-            Increment By Amount
+            (x) Reset
          </button>
-         <button
-            aria-label="Increment value"
-            onClick={() => dispatch(increment())}
-         >
-            Increment
-         </button>
-         <span>&nbsp;&nbsp; {count} &nbsp;&nbsp;</span>
          <button
             aria-label="Decrement value"
             onClick={() => dispatch(decrement())}
          >
-            Decrement
+            (-) Decrement
+         </button>
+         <span>&nbsp;&nbsp; {count} &nbsp;&nbsp;</span>
+         <button
+            aria-label="Increment value"
+            onClick={() => dispatch(increment())}
+         >
+            (+) Increment
          </button>
          <button
-            aria-label="Reset value"
-            onClick={() => dispatch(reset())}
+            aria-label="Increment value"
+            onClick={() => dispatch(incrementByAmount(5))}
          >
-            Reset
+            (++) Increment By Amount
          </button>
       </div>
    );

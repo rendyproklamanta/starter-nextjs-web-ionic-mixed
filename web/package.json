@@ -1,34 +1,36 @@
 {
-  "name": "nextjs-starter",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "devwithtw": "concurrently \"next dev --turbo\" \"tailwindcss -i ./src/styles/globals.css -o ./src/styles/dist.css -w\"",
-    "dev": "next dev --turbo",
-    "prebuild-old": "tailwindcss -m -i ./src/styles/globals.scss -o ./src/styles/dist.css",
-    "build": "next build",
-    "postbuild": "next-sitemap",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.9.3",
-    "aos": "^2.3.4",
-    "next": "^13.2.5-canary.15",
-    "next-redux-wrapper": "^8.1.0",
-    "next-sitemap": "^4.0.6",
-    "nextjs-progressbar": "^0.0.16",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-gtm-module": "^2.0.11",
-    "react-redux": "^8.0.5",
-    "redux-persist": "^6.0.0",
-    "sass": "^1.60.0",
-    "sharp": "^0.32.0"
-  },
-  "devDependencies": {
-    "concurrently": "^7.6.0",
-    "eslint": "^8.36.0",
-    "eslint-config-next": "^13.2.4"
-  }
+   "name": "nextjs-starter",
+   "version": "0.1.0",
+   "private": true,
+   "scripts": {
+      "devwithtw": "concurrently \"next dev --turbo\" \"tailwindcss -i ./src/styles/globals.css -o ./src/styles/dist.css -w\"",
+      "dev": "next dev --turbo",
+      "prebuild-old": "tailwindcss -m -i ./src/styles/globals.scss -o ./src/styles/dist.css",
+      "build": "next build",
+      "postbuild": "next-sitemap",
+      "start": "next start",
+      "start-node": "cross-env NODE_ENV=production node server.js",
+      "lint": "next lint"
+   },
+   "dependencies": {
+      "@reduxjs/toolkit": "^1.9.3",
+      "aos": "^2.3.4",
+      "cross-env": "^7.0.3",
+      "next": "^13.2.5-canary.18",
+      "next-redux-wrapper": "^8.1.0",
+      "next-sitemap": "^4.0.6",
+      "nextjs-progressbar": "^0.0.16",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "react-gtm-module": "^2.0.11",
+      "react-redux": "^8.0.5",
+      "redux-persist": "^6.0.0",
+      "sass": "^1.60.0",
+      "sharp": "^0.32.0"
+   },
+   "devDependencies": {
+      "concurrently": "^7.6.0",
+      "eslint": "^8.36.0",
+      "eslint-config-next": "^13.2.4"
+   }
 }

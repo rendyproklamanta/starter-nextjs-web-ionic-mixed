@@ -1,7 +1,7 @@
 import 'animate.css';
-import('tailwindcss/tailwind.css');
-import('../styles/global.css');
-import('../styles/variables.css');
+import 'tailwindcss/tailwind.css';
+import '../styles/global.css';
+import '../styles/variables.css';
 
 function MyApp({ Component, ...pageProps }) {
    return (

@@ -55,8 +55,10 @@ export const makeStore = () =>
             //    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             // },
          })
-            .concat([pokemonApi.middleware, usersApi.middleware])
-      ,
+            .concat([
+               pokemonApi.middleware,
+               usersApi.middleware
+            ]),
    });
 
 export const wrapper = createWrapper(makeStore);

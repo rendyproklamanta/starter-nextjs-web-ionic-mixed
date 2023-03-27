@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <nav id="navScroll" className="navbar navbar-dark bg-black fixed-top px-vw-5" tabIndex={0}>
+    <nav className="navbar navbar-dark bg-black fixed-top px-vw-5" tabIndex={0}>
     <div className="container">
        {/* <a className="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="index.html">
           <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="currentColor" className="bi bi-stack" viewBox="0 0 16 16">
