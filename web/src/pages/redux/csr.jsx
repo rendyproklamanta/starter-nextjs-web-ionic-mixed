@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { shuffle } from "lodash";
 import { loadCSR } from '../../utils/global';
 import Counter from '../../components/Counter';
+import { NextSeo } from 'next-seo';
 
 const Csr = () => {
    const [page, setPage] = useState(1);
@@ -17,6 +18,11 @@ const Csr = () => {
 
    return (
       <>
+         <NextSeo
+            title="CSR title"
+            description="This example uses more of the available config options."
+         />
+
          <div className="container">
             <div className="row d-flex justify-content-center py-vh-5 pb-0">
                <div className="col-12 col-lg-10 col-xl-8">

@@ -1,9 +1,15 @@
+import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import React from 'react';
 
 const Content = () => {
    return (
       <>
+         <NextSeo
+            title="Using More of Config"
+            description="This example uses more of the available config options."
+         />
+
          <div data-aos="fade">
             <div className="container">
                <div className="row d-flex justify-content-center py-vh-5 pb-0">

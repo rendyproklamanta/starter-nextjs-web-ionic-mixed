@@ -6,11 +6,14 @@ import Layout from '../components/layout';
 import { wrapper } from '../store/store';
 import { Provider } from 'react-redux';
 import NextNProgress from 'nextjs-progressbar';
+import { DefaultSeo } from 'next-seo';
+import { metadata } from '../utils/metadata';
+import { SessionProvider } from 'next-auth/react';
 
 // import { PersistGate } from 'redux-persist/integration/react';
 // import { persistStore } from 'redux-persist';
 
-function MyApp({ Component, ...rest }) {
+function MyApp({ Component, pageProps: { session, ...rest } }) {
    const { store, props } = wrapper.useWrappedStore(rest);
    const { pageProps } = props;
    // const persistor = persistStore(store);
@@ -27,14 +30,19 @@ function MyApp({ Component, ...rest }) {
 
    return (
       <>
+         <DefaultSeo {...metadata} />
+
          <NextNProgress options={{ showSpinner: false }} />
-         <Provider store={store}>
-            {/* <PersistGate loading={process.env.NODE_ENV === 'development' ? 'Loading Persistor...' : false} persistor={persistor}> */}
-            <Layout>
-               <Component {...pageProps} suppressHydrationWarning={true} />
-            </Layout>
-            {/* </PersistGate> */}
-         </Provider>
+
+         <SessionProvider session={session}>
+            <Provider store={store}>
+               {/* <PersistGate loading={process.env.NODE_ENV === 'development' ? 'Loading Persistor...' : false} persistor={persistor}> */}
+               <Layout>
+                  <Component {...pageProps} suppressHydrationWarning={true} />
+               </Layout>
+               {/* </PersistGate> */}
+            </Provider>
+         </SessionProvider>
       </>
    );
 }

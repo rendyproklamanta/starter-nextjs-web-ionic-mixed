@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import styles from './layout.module.css';
 import { Metadata } from '../configs/metadata';
+import { Providers } from '../store/provider';
 
 export const metadata = Metadata;
 
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
                <Link className='container' href="/">This is root layout</Link>
             </div>
             <div>
-               {children}
+               <Providers>{children}</Providers>
             </div>
          </body>
       </html>

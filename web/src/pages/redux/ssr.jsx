@@ -5,6 +5,7 @@ import Router from "next/router";
 import { useEffect, useState } from "react";
 import { shuffle } from "lodash";
 import Counter from "../../components/Counter";
+import { NextSeo } from "next-seo";
 
 const Ssr = ({ res }) => {
    const [page, setPage] = useState(1);
@@ -27,6 +28,12 @@ const Ssr = ({ res }) => {
 
    return (
       <>
+
+         <NextSeo
+            title="SSR title"
+            description="This example uses more of the available config options."
+         />
+
          <div className="container">
             <div className="row d-flex justify-content-center py-vh-5 pb-0">
                <div className="col-12 col-lg-10 col-xl-8">
