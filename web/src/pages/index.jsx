@@ -3,7 +3,7 @@ import Link from 'next/link';
 import DefaultLayout from '../components/layout/DefaultLayout';
 
 const Home = () => {
-
+   
    return (
       <>
          <DefaultLayout>

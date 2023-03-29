@@ -1,38 +1,46 @@
-import { signIn } from 'next-auth/react';
-import React from 'react';
-import { useGetUserQuery } from '../../store/api/authApi';
-import { useEffect } from 'react';
+import { signIn, useSession } from 'next-auth/react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import DefaultLayout from '../../components/layout/DefaultLayout';
+import { loadCSR } from '../../utils/global';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
-   const { isFetching, data } = useGetUserQuery();
+   const { data: session } = useSession();
+   const [loading, setLoading] = useState(false);
    const router = useRouter();
 
-   useEffect(() => {
-      if (!isFetching && data?.user) {
-         router.push('/dashboard');
-      }
-   }, [isFetching, data, router]);
+   if (session?.user) {
+      router.push('/dashboard');
+   }
 
    const handleSubmit = async (e) => {
       e.preventDefault();
+      setLoading(true);
 
       const { email, password } = e.target.elements;
 
-      signIn('credentials',
+      const res = await signIn('credentials',
          {
             email: email.value,
             password: password.value,
+            redirect: false,
             // The page where you want to redirect to after a successful login
             // callbackUrl: `/dashboard`
          }
       );
+
+      if (res?.error) {
+         toast.error(res?.error);
+      }
+
+      setLoading(false);
    };
 
    return (
       <>
          <DefaultLayout>
+
             <div className="container mt-3 mb-5">
                <div className="row d-flex justify-content-center py-vh-5 pb-0">
                   <h1 className='text-center'>Login to your account</h1>
@@ -52,7 +60,7 @@ const Login = () => {
                            <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                            <label className="form-check-label" htmlFor="exampleCheck1">If you really don´t want any newsletter <strong>check this box</strong>. Then you just agree to receive our marketing mails and product stuff. If you check this box <strong>we will not send out our newsletter</strong> to you at all...on mondays.</label>
                         </div>
-                        <button type="submit" className="btn btn-white btn-xl mb-4">Submit</button>
+                        <button type="submit" className="btn btn-white btn-xl mb-4" disabled={loading}>{loading ? 'loading...' : 'Submit'}</button>
                      </div>
                   </form>
                </div>
@@ -62,4 +70,4 @@ const Login = () => {
    );
 };
 
-export default Login;
+export default loadCSR(Login);

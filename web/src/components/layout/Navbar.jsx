@@ -1,9 +1,8 @@
 import Link from 'next/link';
-import { signOut } from "next-auth/react";
-import { useGetUserQuery } from '../../store/api/authApi';
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
-   const { isFetching, data } = useGetUserQuery();
+   const { data: session } = useSession();
 
    return (
       <nav className="navbar navbar-dark bg-black fixed-top px-vw-5" tabIndex={0}>
@@ -32,7 +31,7 @@ const Navbar = () => {
                   </Link>
                </li>
                <li className="nav-item">
-                  {!isFetching && data?.user ?
+                  {session?.user ?
                      (<Link href="/dashboard" className="nav-link fs-6">
                         Dashboard
                      </Link>)
@@ -42,7 +41,7 @@ const Navbar = () => {
                      </Link>)
                   }
                </li>
-               {!isFetching && data?.user && (
+               {session?.user && (
                   <li className="nav-item">
                      <Link href="#" onClick={() => signOut()} className="nav-link fs-6">
                         Logout

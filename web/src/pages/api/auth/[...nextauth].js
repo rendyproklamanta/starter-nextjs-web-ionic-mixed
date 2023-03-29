@@ -15,31 +15,42 @@ export default NextAuth({
                }
             );
             const data = await response.json();
-            // Returning token to set in session
             // console.log(data);
-            return {
-               token: data,
-            };
+            if (!response.ok) {
+               throw new Error(data.message);
+            }
+
+            if (response.ok && data) {
+               return data;
+            }
+
+            // Return null if user data could not be retrieved
+            return null;
          },
       }),
    ],
    callbacks: {
       jwt: async ({ token, user }) => {
-         user && (token.user = user.token);
-         // console.log(token);
-         return Promise.resolve(token);
+         if (user) {
+            token.user = user;
+            token.accessToken = user.token;
+         }
+         // console.log(user);
+         return token;
       },
       session: async ({ session, token }) => {
          // session callback is called whenever a session for that particular user is checked
          // in above function we created token.user=user
          session.user = token.user;
-         return Promise.resolve(session);
+         session.accessToken = token.accessToken;
+         return session;
       },
+
    },
    session: {
       strategy: "jwt",
    },
    pages: {
-      signIn: "/dashboard", //Need to define custom login page (if using)
+      signIn: "/login", //Need to define custom login page (if using)
    },
 });

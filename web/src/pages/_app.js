@@ -9,9 +9,17 @@ import NextNProgress from 'nextjs-progressbar';
 import { DefaultSeo } from 'next-seo';
 import { metadata } from '../utils/metadata';
 import { SessionProvider } from 'next-auth/react';
+import dynamic from 'next/dynamic';
 
 // import { PersistGate } from 'redux-persist/integration/react';
 // import { persistStore } from 'redux-persist';
+
+const Toaster = dynamic(
+   () => import("react-hot-toast").then((c) => c.Toaster),
+   {
+      ssr: false,
+   }
+);
 
 function MyApp({ Component, ...rest }) {
    const { store, props } = wrapper.useWrappedStore(rest);
@@ -36,6 +44,7 @@ function MyApp({ Component, ...rest }) {
          <NextNProgress options={{ showSpinner: false }} />
 
          <SessionProvider session={pageProps.session}>
+            <Toaster />
             <Provider store={store}>
                {/* <PersistGate loading={process.env.NODE_ENV === 'development' ? 'Loading Persistor...' : false} persistor={persistor}> */}
                {getLayout(<Component {...pageProps} suppressHydrationWarning={true} />)}

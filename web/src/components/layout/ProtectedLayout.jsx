@@ -1,21 +1,20 @@
 import { useRouter } from "next/router";
-import { useGetUserQuery } from "../../store/api/authApi";
+// import { useGetUserQuery } from "../../store/api/authApi";
 import Navbar from "./Navbar";
-import { useEffect } from "react";
+import { loadCSR } from "../../utils/global";
+import { useSession } from "next-auth/react";
 
 const ProtectedLayout = ({ children }) => {
 
-   const { isFetching, data } = useGetUserQuery();
+   const { data: session, status } = useSession();
+   // const { isFetching, data } = useGetUserQuery();
    const router = useRouter();
 
-   useEffect(() => {
-      if (!isFetching && !data?.user) {
-         router.push('/login');
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [data, router.pathname, isFetching]);
+   if (status !== 'loading' && !session?.user) {
+      router.push('/login');
+   }
 
-   if (data?.user) {
+   if (session?.user) {
       return (
          <>
             <Navbar />
@@ -26,4 +25,4 @@ const ProtectedLayout = ({ children }) => {
 
 };
 
-export default ProtectedLayout;
+export default loadCSR(ProtectedLayout);
