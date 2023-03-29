@@ -1,13 +1,15 @@
 import Link from "next/link";
-import { getPokemonList } from "../../store/api/pokemonApi";
+import { getPokemonList, getRunningQueriesThunk } from "../../store/api/pokemonApi";
 import { wrapper } from "../../store/store";
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import { shuffle } from "lodash";
 import Counter from "../../components/Counter";
 import { NextSeo } from "next-seo";
+import DefaultLayout from "../../components/layout/DefaultLayout";
 
 const Ssr = ({ res }) => {
+
    const [page, setPage] = useState(1);
    const [data, setData] = useState([]);
    const { data: resData } = res;
@@ -28,47 +30,47 @@ const Ssr = ({ res }) => {
 
    return (
       <>
-
          <NextSeo
-            title="SSR title"
+            title={`SSR - ${resData.results[0].name}`}
             description="This example uses more of the available config options."
          />
+         <DefaultLayout>
+            <div className="container">
+               <div className="row d-flex justify-content-center py-vh-5 pb-0">
+                  <div className="col-12 col-lg-10 col-xl-8">
+                     <div className="row">
+                        <div className="col-12">
 
-         <div className="container">
-            <div className="row d-flex justify-content-center py-vh-5 pb-0">
-               <div className="col-12 col-lg-10 col-xl-8">
-                  <div className="row">
-                     <div className="col-12">
+                           <h2>Test Counter</h2>
+                           <Counter />
 
-                        <h2>Test Counter</h2>
-                        <Counter />
+                           <br />
 
-                        <br />
+                           <h2>Test Redux Toolkit Query</h2>
+                           <button onClick={handleRefetch}>
+                              🔄 Refetch SSR
+                           </button>
+                           <button>
+                              <Link href="/redux/csr">Go To CSR Mode {'>>'}</Link>
+                           </button>
 
-                        <h2>Test Redux Toolkit Query</h2>
-                        <button onClick={handleRefetch}>
-                           🔄 Refetch SSR
-                        </button>
-                        <button>
-                           <Link href="/redux/csr">Go To CSR Mode {'>>'}</Link>
-                        </button>
-
-                        <ul>
-                           {data.map((res, i) => (
-                              <li key={i}>{res.name}</li>
-                           ))}
-                        </ul>
-                        <button onClick={() => setPage((prev) => prev - 10)}>
-                           Prev
-                        </button>
-                        <button onClick={() => setPage((next) => next + 10)}>
-                           Next
-                        </button>
+                           <ul>
+                              {data.map((res, i) => (
+                                 <li key={i}>{res.name}</li>
+                              ))}
+                           </ul>
+                           <button onClick={() => setPage((prev) => prev - 10)}>
+                              Prev
+                           </button>
+                           <button onClick={() => setPage((next) => next + 10)}>
+                              Next
+                           </button>
+                        </div>
                      </div>
                   </div>
                </div>
             </div>
-         </div>
+         </DefaultLayout>
       </>
    );
 };
@@ -76,8 +78,10 @@ const Ssr = ({ res }) => {
 export const getServerSideProps = wrapper.getServerSideProps((store) => async (context) => {
    // const result = await store.dispatch(getPokemonByName.initiate('pikachu'));
    const result = await store.dispatch(getPokemonList.initiate(
-      { offset: context.query.page, limit: 10 }
+      { offset: context.query.page ?? 1, limit: 10 }
    ));
+
+   await Promise.all(store.dispatch(getRunningQueriesThunk()));
 
    return { props: { res: result } };
 });

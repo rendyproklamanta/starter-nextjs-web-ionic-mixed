@@ -1,55 +1,3 @@
-// import NextAuth from "next-auth/next";
-// import CredentialsProvider from "next-auth/providers/credentials";
-// import axios from 'axios';
-
-// export default NextAuth({
-//    providers: [
-//       CredentialsProvider({
-//          name: 'credentials',
-//          authorize: async (credentials) => {
-//             const data = await axios.post('http://localhost:8000/api/auth/login/admin',
-//                {
-//                   password: credentials.password,
-//                   email: credentials.email
-//                },
-//                {
-//                   headers: {
-//                      accept: '*/*',
-//                      'Content-Type': 'application/json'
-//                   }
-//                });
-//             // console.log(data);
-
-//             if (data) {
-//                return data;
-//             } else {
-//                return null;
-//             }
-//          }
-//       }),
-//    ],
-//    callbacks: {
-//       jwt: async ({ token, data }) => {
-//          if (data) {
-//             token.access_token = data.token;
-//             token.id = data._id;
-//          }
-
-//          return token;
-//       },
-//       session: async ({ session, token }) => {
-//          if (token) {
-//             session.id = token.id;
-//          }
-//          return session;
-//       },
-//    },
-//    secret: process.env.NEXTAUTH_SECRET,
-//    session: {
-//       strategy: "jwt",
-//    },
-// });
-
 import NextAuth from "next-auth";
 import CredentialProvider from "next-auth/providers/credentials";
 
@@ -57,7 +5,7 @@ export default NextAuth({
    providers: [
       CredentialProvider({
          async authorize(credentials) {
-            const response = await fetch("http://localhost:8000/api/auth/login/admin",
+            const response = await fetch(process.env.NEXT_API_URL + 'auth/login/admin',
                {
                   method: "POST",
                   body: JSON.stringify(credentials),
@@ -76,15 +24,16 @@ export default NextAuth({
       }),
    ],
    callbacks: {
-      async jwt({ token, user }) {
+      jwt: async ({ token, user }) => {
          user && (token.user = user.token);
          // console.log(token);
-         return token;
+         return Promise.resolve(token);
       },
-      async session({ session, token }) {
-         console.log(token);
-         session.user = token.token;  // Setting token in session
-         return session;
+      session: async ({ session, token }) => {
+         // session callback is called whenever a session for that particular user is checked
+         // in above function we created token.user=user
+         session.user = token.user;
+         return Promise.resolve(session);
       },
    },
    session: {

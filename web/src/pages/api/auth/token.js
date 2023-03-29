@@ -7,10 +7,8 @@ export default async function Token(req, res) {
       // Signed in
       // console.log("JSON Web Token", token);
       // res.send(token.user.token);
-      res.send(token);
+      res.json(token);
    } else {
-      // Not Signed in
-      res.status(401);
+      res.json({ message: 'token not found' });
    }
-   res.end();
 }

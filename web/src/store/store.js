@@ -3,6 +3,7 @@ import { createWrapper } from 'next-redux-wrapper';
 import counter from './slices/counterSlice';
 import { pokemonApi } from './api/pokemonApi';
 import { usersApi } from './api/usersApi';
+import { authApi } from './api/authApi';
 // import storage from 'redux-persist/lib/storage';
 // import {
 //    persistReducer,
@@ -18,6 +19,7 @@ const combinedReducer = combineReducers({
    counter,
    [pokemonApi.reducerPath]: pokemonApi.reducer,
    [usersApi.reducerPath]: usersApi.reducer,
+   [authApi.reducerPath]: authApi.reducer,
 });
 
 // const persistConfig = {
@@ -57,7 +59,8 @@ export const makeStore = () =>
          })
             .concat([
                pokemonApi.middleware,
-               usersApi.middleware
+               usersApi.middleware,
+               authApi.middleware,
             ]),
    });
 

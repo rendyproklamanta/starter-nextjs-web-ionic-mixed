@@ -5,11 +5,11 @@ import { shuffle } from "lodash";
 import { loadCSR } from '../../utils/global';
 import Counter from '../../components/Counter';
 import { NextSeo } from 'next-seo';
+import DefaultLayout from '../../components/layout/DefaultLayout';
 
 const Csr = () => {
    const [page, setPage] = useState(1);
-   const result = useGetPokemonListQuery({ offset: page < 1 ? 1 : page, limit: 10 });
-   const { isFetching, data, refetch } = result;
+   const { isFetching, data, refetch } = useGetPokemonListQuery({ offset: page < 1 ? 1 : page, limit: 10 });
 
    const handleRefetch = () => {
       // force re-fetches the data
@@ -22,45 +22,45 @@ const Csr = () => {
             title="CSR title"
             description="This example uses more of the available config options."
          />
+         <DefaultLayout>
+            <div className="container">
+               <div className="row d-flex justify-content-center py-vh-5 pb-0">
+                  <div className="col-12 col-lg-10 col-xl-8">
+                     <div className="row">
+                        <div className="col-12">
 
-         <div className="container">
-            <div className="row d-flex justify-content-center py-vh-5 pb-0">
-               <div className="col-12 col-lg-10 col-xl-8">
-                  <div className="row">
-                     <div className="col-12">
+                           <h2>Test Counter</h2>
+                           <Counter />
 
-                        <h2>Test Counter</h2>
-                        <Counter />
+                           <br />
 
-                        <br />
+                           <h2>Test Redux Toolkit Query</h2>
+                           <button onClick={handleRefetch}>
+                              🔄 Refetch CSR
+                           </button>
+                           <button>
+                              <Link href="/redux/ssr">{'<<'} Go To SSR Mode</Link>
+                           </button>
 
-                        <h2>Test Redux Toolkit Query</h2>
-                        <button onClick={handleRefetch}>
-                           🔄 Refetch CSR
-                        </button>
-                        <button>
-                           <Link href="/redux/ssr">{'<<'} Go To SSR Mode</Link>
-                        </button>
+                           <ul style={{ height: "300px" }}>
+                              {isFetching ? 'Loading...' : shuffle(data.results).map((res, i) => (
+                                 <li key={i}>{res.name}</li>
+                              ))}
+                           </ul>
 
-                        <ul style={{ height: "300px" }}>
-                           {isFetching ? 'Loading...' : shuffle(data.results).map((res, i) => (
-                              <li key={i}>{res.name}</li>
-                           ))}
-                        </ul>
+                           <button onClick={() => setPage((prev) => prev - 10)}>
+                              Prev
+                           </button>
+                           <button onClick={() => setPage((next) => next + 10)}>
+                              Next
+                           </button>
 
-                        <button onClick={() => setPage((prev) => prev - 10)}>
-                           Prev
-                        </button>
-                        <button onClick={() => setPage((next) => next + 10)}>
-                           Next
-                        </button>
-
+                        </div>
                      </div>
                   </div>
                </div>
             </div>
-         </div>
-
+         </DefaultLayout>
       </>
    );
 

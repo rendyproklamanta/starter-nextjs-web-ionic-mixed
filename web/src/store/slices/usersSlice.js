@@ -24,8 +24,10 @@ export const usersSlice = createSlice({
    },
 });
 
+
 // console.log('dispacth', (state) => state.users.value;;
 
-export const { addUser } = usersSlice.actions;
+export const { addUser, getUser } = usersSlice.actions;
 export const selectAddUser = (state) => state.users.value;
+
 export default usersSlice.reducer;

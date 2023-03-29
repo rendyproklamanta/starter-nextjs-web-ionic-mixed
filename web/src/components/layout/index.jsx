@@ -1,15 +1,24 @@
+import { useEffect } from "react";
+import { useGetUserQuery } from "../../store/api/authApi";
+import { useRouter } from "next/router";
+import DefaultLayout from "./DefaultLayout";
+import ProtectedLayout from "./ProtectedLayout";
 
-import Footer from './Footer';
-import Navbar from './Navbar';
+export default function Layout({ children }) {
+   const { isFetching, data } = useGetUserQuery();
+   const router = useRouter();
 
-const Layout = ({ children }) => {
-  return (
-    <>
-      <Navbar />
-      {children}
-      <Footer />
-    </>
-  );
-};
+   useEffect(() => {
+      if (!isFetching && !data?.user) {
+         router.push('/login');
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [data, router.pathname, isFetching]);
 
-export default Layout;
+   if (data?.user) {
+      return (<ProtectedLayout>{children}</ProtectedLayout>);
+   } else {
+      return (<DefaultLayout>{children}</DefaultLayout>);
+   }
+
+}
