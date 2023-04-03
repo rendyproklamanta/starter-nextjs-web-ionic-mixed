@@ -6,7 +6,7 @@ import Home from './tabs/Feed';
 import Lists from './tabs/Lists';
 import ListDetail from '../../components/ListDetail';
 import Settings from './tabs/Settings';
-import Contents from './chat/ChatList';
+import Contents from './Contents';
 
 const Tabs = () => {
    return (
