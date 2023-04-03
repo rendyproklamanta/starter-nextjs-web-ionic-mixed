@@ -18,6 +18,6 @@ const PageTwo = () => {
       </IonContent>
       </IonPage>
   );
-}
+};
 
 export default PageTwo;

@@ -33,7 +33,9 @@ window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => 
       await StatusBar.setStyle({
          style: status.matches ? Style.Dark : Style.Light,
       });
-   } catch { }
+   } catch {
+      return null;
+   }
 });
 
 const Ionic = () => {

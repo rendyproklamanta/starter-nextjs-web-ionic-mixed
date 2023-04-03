@@ -1,27 +1,31 @@
 import React from 'react';
-import { IonSlides, IonSlide, IonContent, IonPage } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Optional parameters to pass to the swiper instance.
-// See https:/swiperjs.com/swiper-api for valid options.
-const slideOpts = {
-   initialSlide: 1,
-   speed: 400
-};
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/keyboard';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/zoom';
+import '@ionic/react/css/ionic-swiper.css';
+import { Autoplay, Pagination } from 'swiper';
+
 
 const Slides = () => (
    <IonPage>
       <IonContent>
-         <IonSlides pager={true} options={slideOpts} style={{ height: '100%' }}>
-            <IonSlide>
-               <h1>Slide 1</h1>
-            </IonSlide>
-            <IonSlide>
-               <h1>Slide 2</h1>
-            </IonSlide>
-            <IonSlide>
-               <h1>Slide 3</h1>
-            </IonSlide>
-         </IonSlides>
+         <Swiper
+            modules={[Autoplay, Pagination]}
+            autoplay={true}
+            pagination={true}
+            loop={true}
+            className='h-full'
+         >
+            <SwiperSlide>Slide 1</SwiperSlide>
+            <SwiperSlide>Slide 2</SwiperSlide>
+            <SwiperSlide>Slide 3</SwiperSlide>
+         </Swiper>
       </IonContent>
    </IonPage>
 

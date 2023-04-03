@@ -1,7 +1,6 @@
-import { IonBackButton, IonButton, IonButtons, IonCardTitle, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonIcon, IonInput, IonLabel, IonPage, IonRouterLink, IonRow, IonToolbar } from '@ionic/react';
-import { Action } from '../../components/Action';
+import { IonBackButton, IonButton, IonButtons, IonCardTitle, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonInput, IonLabel, IonPage, IonRow, IonToolbar } from '@ionic/react';
 import { Wave } from '../../components/Wave';
-import { arrowBack, shapesOutline } from "ionicons/icons";
+import { arrowBack } from "ionicons/icons";
 
 const Signup = () => {
    return (

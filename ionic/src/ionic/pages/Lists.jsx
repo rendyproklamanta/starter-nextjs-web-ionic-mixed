@@ -12,13 +12,13 @@ import {
    IonList,
 } from '@ionic/react';
 
-const ListEntry = ({ list, ...props }) => (
+const ListEntry = ({ list, ...props }) => ( // eslint-disable-line no-unused-vars
    <IonItem routerLink={`/tabs/lists/${list.id}`} className="list-entry">
       <IonLabel>{list.name}</IonLabel>
    </IonItem>
 );
 
-const AllLists = ({ onSelect }) => {
+const AllLists = ({ onSelect }) => { // eslint-disable-line no-unused-vars
    const lists = Store.useState(selectors.getLists);
 
    return (

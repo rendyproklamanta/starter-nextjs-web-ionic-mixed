@@ -1,6 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
 import { cog, flash, list } from 'ionicons/icons';
 
 import Home from './Feed';
@@ -12,6 +11,7 @@ import Slides from './Slides';
 const Tabs = () => {
   return (
     <IonTabs>
+
       <IonRouterOutlet>
         <Route path="/tabs/feed" render={() => <Home />} exact={true} />
         <Route path="/tabs/lists" render={() => <Lists />} exact={true} />
@@ -20,6 +20,7 @@ const Tabs = () => {
         <Route path="/tabs/slides" render={() => <Slides />} exact={true} />
         <Route path="/tabs" render={() => <Redirect to="/tabs/feed" />} exact={true} />
       </IonRouterOutlet>
+
       <IonTabBar slot="bottom">
         <IonTabButton tab="tab1" href="/tabs/feed">
           <IonIcon icon={flash} />
@@ -38,6 +39,7 @@ const Tabs = () => {
           <IonLabel>Slides</IonLabel>
         </IonTabButton>
       </IonTabBar>
+      
     </IonTabs>
   );
 };
