@@ -1,24 +1,15 @@
-import { IonBackButton, IonButton, IonButtons, IonCardTitle, IonCol, IonContent, IonFooter, IonGrid, IonHeader, IonInput, IonLabel, IonPage, IonRow, IonToolbar } from '@ionic/react';
-import { Wave } from '../../components/Wave';
-import { arrowBack } from "ionicons/icons";
+import { IonButton, IonCardTitle, IonCol, IonContent, IonFooter, IonGrid, IonInput, IonLabel, IonPage, IonRouterLink, IonRow } from '@ionic/react';
+import { Action } from '../../../components/Action';
+import { Wave } from '../../../components/Wave';
 
-const Signup = () => {
+const Login = () => {
    return (
       <IonPage>
-
-         <IonHeader>
-            <IonToolbar>
-               <IonButtons slot="start">
-                  <IonBackButton icon={arrowBack} text="" className="custom-back" />
-               </IonButtons>
-            </IonToolbar>
-         </IonHeader>
-
          <IonContent fullscreen>
             <IonGrid className="ion-padding">
                <IonRow >
                   <IonCol size="12">
-                     <IonCardTitle>Signup</IonCardTitle>
+                     <IonCardTitle>Log in</IonCardTitle>
                      <h5>Welcome back, hope youre doing well</h5>
                   </IonCol>
                </IonRow>
@@ -36,7 +27,9 @@ const Signup = () => {
                         </IonLabel>
                         <IonInput id="name" label="Name" required='true' style={{ background: '#2c2c2c', borderRadius: '10px', margin: '20px 0', padding: '7px 20px ' }} />
                      </div>
-                     <IonButton className="custom-button h-50 mt-10 animate__animated animate__fadeIn animate__delay-1s" expand="block">Signup Now</IonButton>
+                     <IonRouterLink className="custom-link" routerLink="/">
+                        <IonButton className="custom-button h-50 mt-10 animate__animated animate__fadeIn animate__delay-1s" expand="block">Login</IonButton>
+                     </IonRouterLink>
                   </IonCol>
                </IonRow>
             </IonGrid>
@@ -44,6 +37,7 @@ const Signup = () => {
 
          <IonFooter>
             <IonGrid className="ion-no-margin ion-no-padding">
+               <Action message="Don't have an account?" text="Sign up" link="/signup" />
                <Wave />
             </IonGrid>
          </IonFooter>
@@ -51,4 +45,4 @@ const Signup = () => {
    );
 };
 
-export default Signup;
+export default Login;

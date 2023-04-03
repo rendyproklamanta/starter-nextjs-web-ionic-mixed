@@ -12,9 +12,9 @@ import {
 } from '@ionic/react';
 import { useParams } from 'react-router-dom';
 
-import Store from '../../store';
-import * as actions from '../../store/actions';
-import * as selectors from '../../store/selectors';
+import Store from '../store';
+import * as actions from '../store/actions';
+import * as selectors from '../store/selectors';
 
 const ListItems = ({ list }) => {
    return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonContent, IonPage } from '@ionic/react';
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -14,6 +14,14 @@ import { Autoplay, Pagination } from 'swiper';
 
 const Slides = () => (
    <IonPage>
+      <IonHeader>
+         <IonToolbar>
+            <IonButtons slot="start">
+               <IonBackButton defaultHref="/tabs/lists" />
+            </IonButtons>
+            <IonTitle>Slider</IonTitle>
+         </IonToolbar>
+      </IonHeader>
       <IonContent>
          <Swiper
             modules={[Autoplay, Pagination]}

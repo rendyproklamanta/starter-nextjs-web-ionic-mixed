@@ -1,5 +1,5 @@
-import Store from '../../store';
-import * as selectors from '../../store/selectors';
+import Store from '../../../store';
+import * as selectors from '../../../store/selectors';
 
 import {
    IonPage,
@@ -28,6 +28,12 @@ const AllLists = ({ onSelect }) => { // eslint-disable-line no-unused-vars
          ))}
          <IonItem routerLink={`/login`}>
             <IonLabel>Login Page</IonLabel>
+         </IonItem>
+         <IonItem routerLink={`/slides`}>
+            <IonLabel>Slider</IonLabel>
+         </IonItem>
+         <IonItem routerLink={`/chat`}>
+            <IonLabel>Chat</IonLabel>
          </IonItem>
       </>
    );

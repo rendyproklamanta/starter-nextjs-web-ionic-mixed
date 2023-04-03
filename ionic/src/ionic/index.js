@@ -1,12 +1,3 @@
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
-import { StatusBar, Style } from '@capacitor/status-bar';
-
-import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
-
-import Tabs from './pages/Tabs';
-import PageTwo from './pages/PageTwo';
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -22,9 +13,19 @@ import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { StatusBar, Style } from '@capacitor/status-bar';
+import { IonReactRouter } from '@ionic/react-router';
+import { Redirect, Route } from 'react-router-dom';
+import Tabs from './pages/Tabs';
+import PageTwo from './pages/PageTwo';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
 import PageNotFound from './pages/PageNotFound';
+import Slides from '../components/Slides';
+import ChatList from './pages/chat/ChatList';
+import ChatMessage from './pages/chat/ChatMessage';
 
 setupIonicReact({});
 
@@ -47,6 +48,9 @@ const Ionic = () => {
                <Route path="/login" render={() => <Login />} />
                <Route path="/signup" render={() => <Signup />} />
                <Route path="/tabs" render={() => <Tabs />} />
+               <Route path="/slides" render={() => <Slides />} exact={true} />
+               <Route path="/chat" render={() => <ChatList />} exact={true} />
+               <Route path="/chat/message" render={() => <ChatMessage />} exact={true} />
                <Route path="/pagetwo" render={() => <PageTwo />} />
                <Route path="/" render={() => <Redirect to="/tabs/feed" />} exact={true} />
                {/* <Route render={() => <Redirect to="/tabs" />} /> */}

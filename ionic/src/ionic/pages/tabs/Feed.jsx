@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Card from '../ui/Card';
+import Card from '../../ui/Card';
 
 import {
    IonPage,
@@ -13,18 +13,18 @@ import {
    IonMenuButton,
    IonMenu,
 } from '@ionic/react';
-import Notifications from './Notifications';
+import Notifications from '../Notifications';
 import { useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
-import { getHomeItems } from '../../store/selectors';
-import Store from '../../store';
+import { getHomeItems } from '../../../store/selectors';
+import Store from '../../../store';
 
 const FeedCard = ({ title, type, text, author, authorAvatar, image }) => (
    <Card className="my-4 mx-auto">
       <div className="h-32 w-full relative">
          <Image className="rounded-t-xl object-cover min-w-full min-h-full max-w-full max-h-full" src={image} alt="" fill />
       </div>
-      <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-gray-900">
+      <div className="px-4 py-4 bg-white rounded-b-xl dark:bg-slate-800">
          <h4 className="font-bold py-0 text-s text-gray-400 dark:text-gray-500 uppercase">{type}</h4>
          <h2 className="font-bold text-2xl text-gray-800 dark:text-gray-100">{title}</h2>
          <p className="sm:text-sm text-s text-gray-500 mr-1 my-3 dark:text-gray-400">{text}</p>
