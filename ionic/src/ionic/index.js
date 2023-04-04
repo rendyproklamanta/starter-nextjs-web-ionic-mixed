@@ -18,6 +18,7 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import Tabs from './pages/Tabs';
 import PageTwo from './pages/PageTwo';
 import Login from './pages/auth/Login';
@@ -39,6 +40,9 @@ window.matchMedia("(prefers-color-scheme: dark)").addListener(async (status) => 
    }
 });
 
+// Call the element loader after the app has been rendered the first time
+defineCustomElements(window);
+
 const Ionic = () => {
    return (
       <IonApp>
@@ -52,7 +56,7 @@ const Ionic = () => {
                <Route path="/chat" render={() => <ChatList />} exact={true} />
                <Route path="/chat/message" render={() => <ChatMessage />} exact={true} />
                <Route path="/pagetwo" render={() => <PageTwo />} />
-               <Route path="/" render={() => <Redirect to="/tabs/feed" />} exact={true} />
+               <Route path="/" render={() => <Redirect to="/tabs/home" />} exact={true} />
                {/* <Route render={() => <Redirect to="/tabs" />} /> */}
                <Route render={() => <PageNotFound />} />
             </IonRouterOutlet>
