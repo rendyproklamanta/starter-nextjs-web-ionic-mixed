@@ -115,51 +115,63 @@ const Home = () => {
                   <IonRow className='-ml-2 -mr-2'>
                      <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
                         <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="Silhouette of mountains" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
-                           <IonText className='flex justify-center mt-2 text-xs'>
-                              Lorem Ipsum
-                           </IonText>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
                         </IonCard>
+                        <IonText >
+                           <p className='text-center mt-1 text-xs'>
+                              Lorem
+                           </p>
+                        </IonText>
                      </IonCol>
                      <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
                         <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="Silhouette of mountains" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
-                           <IonText className='flex justify-center mt-2 text-xs'>
-                              Lorem Ipsum
-                           </IonText>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
                         </IonCard>
+                        <IonText >
+                           <p className='text-center mt-1 text-xs'>
+                              Lorem
+                           </p>
+                        </IonText>
                      </IonCol>
                      <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
                         <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="Silhouette of mountains" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
-                           <IonText className='flex justify-center mt-2 text-xs'>
-                              Lorem Ipsum
-                           </IonText>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
                         </IonCard>
+                        <IonText >
+                           <p className='text-center mt-1 text-xs'>
+                              Lorem
+                           </p>
+                        </IonText>
                      </IonCol>
                      <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
                         <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="Silhouette of mountains" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
-                           <IonText className='flex justify-center mt-2 text-xs'>
-                              Lorem Ipsum
-                           </IonText>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
                         </IonCard>
+                        <IonText >
+                           <p className='text-center mt-1 text-xs'>
+                              Lorem
+                           </p>
+                        </IonText>
                      </IonCol>
                      <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
                         <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="Silhouette of mountains" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
-                           <IonText className='flex justify-center mt-2 text-xs'>
-                              Lorem Ipsum
-                           </IonText>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
                         </IonCard>
+                        <IonText >
+                           <p className='text-center mt-1 text-xs'>
+                              Lorem
+                           </p>
+                        </IonText>
                      </IonCol>
                      <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
                         <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="Silhouette of mountains" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
-                           <IonText className='flex justify-center mt-2 text-xs'>
-                              Lorem Ipsum
-                           </IonText>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
                         </IonCard>
+                        <IonText >
+                           <p className='text-center mt-1 text-xs'>
+                              Lorem
+                           </p>
+                        </IonText>
                      </IonCol>
                   </IonRow>
                </IonGrid>
