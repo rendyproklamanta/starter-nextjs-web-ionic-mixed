@@ -34,7 +34,7 @@ const Tabs = () => {
                      <IonIcon icon={list} />
                      <IonLabel>Lists</IonLabel>
                   </IonTabButton>
-                  <IonTabButton></IonTabButton>
+                  <IonTabButton mode='ios'></IonTabButton>
                   <IonTabButton tab="tab3" href="/tabs/settings">
                      <IonIcon icon={cog} />
                      <IonLabel>Settings</IonLabel>
