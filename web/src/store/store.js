@@ -43,7 +43,7 @@ const combinedReducer = combineReducers({
 //    }
 // };
 
-export const makeStore = () =>
+export const store = () =>
 
    configureStore({
       reducer: combinedReducer,
@@ -64,4 +64,7 @@ export const makeStore = () =>
             ]),
    });
 
-export const wrapper = createWrapper(makeStore);
+export const RootState = store.getState;
+export const AppDispatch = store.dispatch;
+
+export const wrapper = createWrapper(store);

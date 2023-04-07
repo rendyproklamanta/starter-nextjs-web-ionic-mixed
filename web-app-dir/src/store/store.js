@@ -1,5 +1,4 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { createWrapper } from 'next-redux-wrapper';
 import counter from './slices/counterSlice';
 import { pokemonApi } from './api/pokemonApi';
 import { usersApi } from './api/usersApi';
@@ -41,24 +40,25 @@ const combinedReducer = combineReducers({
 //    }
 // };
 
-export const makeStore = () =>
+export const store = configureStore({
+   reducer: combinedReducer,
+   // reducer: persistedReducer,
+   devTools: true,
+   middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+         immutableCheck: false,
+         serializableCheck: false,
+         // serializableCheck: {
+         //    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+         // },
+      })
+         .concat([
+            pokemonApi.middleware,
+            usersApi.middleware
+         ]),
+});
 
-   configureStore({
-      reducer: combinedReducer,
-      // reducer: persistedReducer,
-      devTools: true,
-      middleware: (getDefaultMiddleware) =>
-         getDefaultMiddleware({
-            immutableCheck: false,
-            serializableCheck: false,
-            // serializableCheck: {
-            //    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            // },
-         })
-            .concat([
-               pokemonApi.middleware,
-               usersApi.middleware
-            ]),
-   });
+export const RootState = store.getState;
+export const AppDispatch = store.dispatch;
 
-export const wrapper = createWrapper(makeStore);
+export default store;

@@ -1,6 +1,7 @@
+'use client';
+
 import Link from 'next/link';
-import '../styles/globals.css';
-import Counter from '../components/Counter';
+import { useGlobalContext } from '../../contexts/global';
 
 export const metadata = {
    title: 'Home',
@@ -8,13 +9,16 @@ export const metadata = {
 };
 
 export default function Page() {
+   const { color, setColor } = useGlobalContext();
 
    return (
       <>
          <h1>Hello, Next.js!</h1>
-         <Counter />
+         <p>Current color: {color}</p>
+         <button onClick={() => setColor('blue')}>Set color to blue</button>
+         <br /><br />
+
          <Link className='container' href="/second">second page</Link>
-         <br />
          <Link className='container' href="/breaking">breaking page</Link>
       </>
    );
