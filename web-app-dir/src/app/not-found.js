@@ -1,9 +1,9 @@
 'use client';
 
-export default function GlobalError({error,reset}) {
+export default function NotFound({ error, reset }) {
 
    console.log(error);
-   
+
    return (
       <html>
          <head></head>

@@ -1,7 +1,7 @@
-// import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import styles from './layout.module.css';
 import { Metadata } from '../configs/metadata';
+// import { Providers } from '../contexts/providers'; // useContext
 import { Providers } from '../store/provider';
 
 export const metadata = Metadata;
