@@ -5,8 +5,11 @@ import Header from "../components/Header";
 import ScrollToTop from "../components/ScrollToTop";
 import "node_modules/react-modal-video/css/modal-video.css";
 import "../styles/index.css";
-import Providers from "../utils/providers";
+import Providers from "./providers";
+import { Metadata } from "../utils/metadata";
 // import { Providers } from "./providers";
+
+export const metadata = Metadata;
 
 export default function RootLayout({ children }) {
    return (
