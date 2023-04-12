@@ -1,8 +1,8 @@
-import { useGlobalContext } from '@/src/contexts/global';
+import { useGlobalContext } from '@/src/contexts/globalcontext';
 import React from 'react';
 
 export const TestContext = () => {
-   const { color, setColor, count, setCount } = useGlobalContext();
+   const { color, setColor, count, setCount, initialColorState } = useGlobalContext();
 
    return (
       <div style={{ marginBottom: "4rem", textAlign: "center" }}>
@@ -18,11 +18,12 @@ export const TestContext = () => {
          <br /><br />
          <hr></hr>
          <br />
-         <p>Current color : {color}</p>
+         <p className='mb-5'>Current color : {color.color}</p>
+         <button onClick={() => setColor({ color: 'blue' })}>[Set color to {'>>'} blue]</button>
          <br />
-         <button onClick={() => setColor('blue')}>[Set color to {'>>'} blue]</button>
+         <button onClick={() => setColor({ color: 'yellow' })}>[Set color to {'>>'} yellow]</button>
          <br />
-         <button onClick={() => setColor('yellow')}>[Set color to {'>>'} yellow]</button>
+         <button onClick={() => setColor(initialColorState)}>[X Reset color X]</button>
          <br /><br />
          <hr></hr>
          <br />

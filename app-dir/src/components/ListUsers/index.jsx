@@ -1,23 +1,19 @@
-"use client";
-
 import Image from "next/image";
 import React from "react";
-import { TestContext } from "../Context/TestContext";
 
 export default function ListUsers({ result }) {
-   const { data, isLoading, isFetching, error } = result;
-   // console.log(data);
+   const { data, isLoading, error } = result;
 
    return (
 
-      <section className="pt-[120px] pb-[120px]">
+      <section>
          <div className="container">
 
-            <TestContext />
+            {/* <TestContext /> */}
 
             {error ? (
                <p>Oh no, there was an error</p>
-            ) : isLoading || isFetching ? (
+            ) : isLoading ? (
                <p>Loading</p>
             ) : data ? (
                <div
@@ -27,7 +23,7 @@ export default function ListUsers({ result }) {
                      gap: 20,
                   }}
                >
-                  {data?.map((user, i) => (
+                  {data?.results.map((user, i) => (
                      <div
                         key={i}
                         style={{ border: "1px solid #ccc", textAlign: "center" }}
@@ -44,6 +40,7 @@ export default function ListUsers({ result }) {
                </div>
             ) : null}
          </div>
-      </section>
+
+      </section >
    );
 }

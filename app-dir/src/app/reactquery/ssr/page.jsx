@@ -1,18 +1,26 @@
-import { dehydrate } from "@tanstack/query-core";
-import getQueryClient from "@/src/utils/getQueryClient";
-import { Hydrate } from "@tanstack/react-query";
-import { getUsers } from "@/src/services/users";
-import HydratedUsers from "@/src/components/ListUsers/ListUsersSsr";
+'use client';
+
+import { getPokemons } from "@/src/services/users";
+import ListUsers from "@/src/components/ListUsers";
+import { useSearchParams } from "next/navigation";
+import ListUsersSsr from "@/src/components/ListUsers/ListUsersSsr";
 
 export default async function Page() {
 
-   const queryClient = getQueryClient();
-   await queryClient.prefetchQuery(["hydrate-users"], getUsers);
-   const dehydratedState = dehydrate(queryClient);
+   // const queryClient = getQueryClient();
+   // await queryClient.prefetchQuery(["hydrate-poke"], getUsers);
+   // const dehydratedState = dehydrate(queryClient);
 
-   return (
-      <Hydrate state={dehydratedState}>
-         <HydratedUsers />
-      </Hydrate>
-   );
+   // return (
+   //    <Hydrate state={dehydratedState}>
+   //       <HydratedUsers />
+   //    </Hydrate>
+   // );
+
+   const searchParams = useSearchParams();
+   const page = searchParams.get('page');
+
+   const initialData = await getPokemons({ offset: page, limit: 8 });
+
+   return <ListUsersSsr users={initialData} />;
 }
