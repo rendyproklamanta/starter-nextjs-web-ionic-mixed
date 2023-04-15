@@ -1,15 +1,13 @@
 import Image from "next/image";
 import React from "react";
 
-export default function ListUsers({ result }) {
+export default function Reactquery({ result }) {
    const { data, isLoading, error } = result;
 
    return (
 
       <section>
          <div className="container">
-
-            {/* <TestContext /> */}
 
             {error ? (
                <p>Oh no, there was an error</p>
@@ -28,13 +26,15 @@ export default function ListUsers({ result }) {
                         key={i}
                         style={{ border: "1px solid #ccc", textAlign: "center" }}
                      >
-                        <Image
-                           src={`https://robohash.org/${user.id}?set=set2&size=180x180`}
-                           alt={user.name}
-                           height={180}
-                           width={180}
-                        />
-                        <h3>{user.name}</h3>
+                        <center>
+                           <Image
+                              src={`https://robohash.org/${user.name}?set=set2&size=180x180`}
+                              alt={user.name}
+                              height={180}
+                              width={180}
+                           />
+                           <h3 className="my-2 capitalize">{user.name}</h3>
+                        </center>
                      </div>
                   ))}
                </div>

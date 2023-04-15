@@ -1,18 +1,18 @@
 'use client';
 
-import { getPokemons } from '@/src/services/users';
+import { getPokemons } from '@/src/services/general';
 import { useQuery } from '@tanstack/react-query';
-import ListUsers from '.';
 import { useState } from 'react';
+import Reactquery from '.';
 
-export default function ListUsersCsr() {
+export default function Csr() {
 
    // This query was not prefetched on the server and will not start
    // fetching until on the client, both patterns are fine to mix
    const [page, setPage] = useState(1);
 
    const result = useQuery({
-      queryKey: ["hydrate-poke", page],
+      queryKey: ["pokemons", page],
       queryFn: () => getPokemons({ offset: page, limit: 8 }),
    });
 
@@ -20,7 +20,7 @@ export default function ListUsersCsr() {
       <>
          <section className="relative z-10 overflow-hidden pt-36 pb-16 md:pb-20 lg:pb-28">
             <div className="container">
-               <ListUsers result={result} />
+               <Reactquery result={result} />
                <br />
                <center>
                   <button onClick={() => setPage((prev) => prev - 10)}>

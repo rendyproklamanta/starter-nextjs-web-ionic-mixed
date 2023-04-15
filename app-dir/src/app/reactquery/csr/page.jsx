@@ -1,5 +1,5 @@
-import ListUsersCsr from "@/src/components/ListUsers/ListUsersCsr";
+import Csr from "@/src/components/Reactquery/Csr";
 
-export default async function Page() {
-   return (<ListUsersCsr />);
+export default function Page() {
+   return (<Csr />);
 }

@@ -33,6 +33,11 @@ const menuData = [
             path: "/reactquery/csr",
             newTab: false,
          },
+         {
+            title: "Context",
+            path: "/reactquery/context",
+            newTab: false,
+         },
       ]
    },
    {

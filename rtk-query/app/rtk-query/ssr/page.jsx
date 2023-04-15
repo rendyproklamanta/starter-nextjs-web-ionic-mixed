@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { getPokemon } from '../../../lib/pokemon';
+import { getPokemons } from '@/src/services/users';
 
 export async function generateMetadata({ searchParams }) {
-   const data = await getPokemon({ searchParams });
+   const data = await getPokemons({ searchParams });
 
    return {
       title: data.results[0].name,
@@ -21,7 +21,7 @@ export async function generateMetadata({ searchParams }) {
 }
 
 const Ssr = async ({ searchParams }) => {
-   const data = await getPokemon({ searchParams });
+   const data = await getPokemons({ searchParams });
 
    return (
       <div>

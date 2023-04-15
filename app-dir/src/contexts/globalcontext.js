@@ -15,27 +15,34 @@ const GlobalContext = createContext({});
 //    }
 // ];
 
-const initialColorState = { color: "red" };
-
-const colorState = () => {
-   const colorStorage = typeof window !== "undefined" ? window.localStorage.getItem('color') : false;
-   return colorStorage ? JSON.parse(colorStorage) : initialColorState;
-};
+const initialColorState = { value: "red", secondary: 'grey' };
+const initialCountState = 0;
 
 export const GlobalProvider = props => {
-   // const [color, setColor] = useState('red');
-   const [color, setColor] = useState(colorState);
-   const [count, setCount] = useState(0);
+   const [color, setColor] = useState(false);
+   const [count, setCount] = useState(false);
+   const [loading, isLoading] = useState(true);
+
+   useEffect(() => {
+      const colorStorage = window.localStorage.getItem('color');
+      const countStorage = window.localStorage.getItem('count');
+
+      colorStorage && setColor(JSON.parse(colorStorage));
+      countStorage && setCount(JSON.parse(countStorage));
+
+      isLoading(false);
+   }, []);
 
    useEffect(() => {
       window.localStorage.setItem("color", JSON.stringify(color));
-   }, [color]);
+      window.localStorage.setItem("count", JSON.stringify(count));
+   }, [color, count]);
 
    return (
       <GlobalContext.Provider value={{
-         color, setColor,
-         count, setCount,
-         initialColorState,
+         loading,
+         color, setColor, initialColorState,
+         count, setCount, initialCountState,
       }}>
          {props.children}
       </GlobalContext.Provider>

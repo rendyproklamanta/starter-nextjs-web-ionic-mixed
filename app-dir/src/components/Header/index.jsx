@@ -1,11 +1,16 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
+import { useGlobalContext } from "@/src/contexts/globalcontext";
+import Spinner from "../Loader/Spinner";
 
 const Header = () => {
+   const { count, loading } = useGlobalContext();
+
    // Navbar toggle
    const [navbarOpen, setNavbarOpen] = useState(false);
    const navbarToggleHandler = () => {
@@ -145,6 +150,7 @@ const Header = () => {
                         </nav>
                      </div>
                      <div className="flex items-center justify-end pr-16 lg:pr-0">
+                        Count : {loading ? <Spinner /> : count ? count : 0}
                         <Link
                            href="/signin"
                            className="hidden py-3 px-7 text-base font-bold text-dark hover:opacity-70 dark:text-white md:block"
