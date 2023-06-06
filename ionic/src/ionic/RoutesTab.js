@@ -2,11 +2,11 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonRouterOutlet, IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel, IonFab, IonFabButton, IonContent } from '@ionic/react';
 import { apertureOutline, camera, cog, flash, list } from 'ionicons/icons';
 
-import Home from './tabs/Home';
-import Lists from './tabs/Lists';
-import ListDetail from '../../components/ListDetail';
-import Settings from './tabs/Settings';
-import Contents from './Contents';
+import Home from './pages/tabs/Home';
+import Lists from './pages/tabs/Lists';
+import ListDetail from '../components/ListDetail';
+import Settings from './pages/tabs/Settings';
+import Contents from './pages/tabs/Contents';
 
 const Tabs = () => {
 

@@ -1,4 +1,4 @@
-import { IonButton, IonCardTitle, IonCol, IonContent, IonFooter, IonGrid, IonInput, IonLabel, IonPage, IonRouterLink, IonRow } from '@ionic/react';
+import { IonButton, IonCardTitle, IonCol, IonContent, IonFooter, IonGrid, IonInput, IonPage, IonRouterLink, IonRow } from '@ionic/react';
 import { Action } from '../../../components/Action';
 import { Wave } from '../../../components/Wave';
 
@@ -15,20 +15,26 @@ const Login = () => {
                </IonRow>
                <IonRow className="ion-margin-top ion-padding-top">
                   <IonCol size="12">
-                     <div>
-                        <IonLabel>
-                           Username
-                        </IonLabel>
-                        <IonInput id="name" label="Name" required='true' style={{ background: '#2c2c2c', borderRadius: '10px', margin: '20px 0', padding: '7px 20px ' }} />
+                     <div className='mb-5'>
+                        <IonInput
+                           type="email"
+                           fill="solid"
+                           label="Email"
+                           labelPlacement="floating"
+                           errorText="Invalid email"
+                        ></IonInput>
                      </div>
                      <div>
-                        <IonLabel>
-                           Password
-                        </IonLabel>
-                        <IonInput id="name" label="Name" required='true' style={{ background: '#2c2c2c', borderRadius: '10px', margin: '20px 0', padding: '7px 20px ' }} />
+                        <IonInput
+                           type="email"
+                           fill="solid"
+                           label="Email"
+                           labelPlacement="floating"
+                           errorText="Invalid email"
+                        ></IonInput>
                      </div>
-                     <IonRouterLink className="custom-link" routerLink="/">
-                        <IonButton className="custom-button h-50 mt-10 animate__animated animate__fadeIn animate__delay-1s" expand="block">Login</IonButton>
+                     <IonRouterLink routerLink="/tabs/home">
+                        <IonButton className="h-[50px] mt-5" expand="block">Login</IonButton>
                      </IonRouterLink>
                   </IonCol>
                </IonRow>
@@ -36,8 +42,8 @@ const Login = () => {
          </IonContent>
 
          <IonFooter>
-            <IonGrid className="ion-no-margin ion-no-padding">
-               <Action message="Don't have an account?" text="Sign up" link="/signup" />
+            <IonGrid className="ion-no-padding pt-5">
+               <Action message="Don't have an account?" text="Sign up" link="/signup" className="animate__animated animate__fadeIn animate__delay-1s" />
                <Wave />
             </IonGrid>
          </IonFooter>

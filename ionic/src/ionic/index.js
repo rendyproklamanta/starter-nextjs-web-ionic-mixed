@@ -14,19 +14,10 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, setupIonicReact } from '@ionic/react';
 import { StatusBar, Style } from '@capacitor/status-bar';
-import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import Tabs from './pages/Tabs';
-import PageTwo from './pages/PageTwo';
-import Login from './pages/auth/Login';
-import Signup from './pages/auth/Signup';
-import PageNotFound from './pages/PageNotFound';
-import Slides from '../components/Slides';
-import ChatList from './pages/chat/ChatList';
-import ChatMessage from './pages/chat/ChatMessage';
+import Routes from './Routes';
 
 setupIonicReact({});
 
@@ -46,21 +37,7 @@ defineCustomElements(window);
 const Ionic = () => {
    return (
       <IonApp>
-         <IonReactRouter>
-            <IonRouterOutlet id="main">
-               <Route path="/404" render={() => <PageNotFound />} />
-               <Route path="/login" render={() => <Login />} />
-               <Route path="/signup" render={() => <Signup />} />
-               <Route path="/tabs" render={() => <Tabs />} />
-               <Route path="/slides" render={() => <Slides />} exact={true} />
-               <Route path="/chat" render={() => <ChatList />} exact={true} />
-               <Route path="/chat/message" render={() => <ChatMessage />} exact={true} />
-               <Route path="/pagetwo" render={() => <PageTwo />} />
-               <Route path="/" render={() => <Redirect to="/tabs/home" />} exact={true} />
-               {/* <Route render={() => <Redirect to="/tabs" />} /> */}
-               <Route render={() => <PageNotFound />} />
-            </IonRouterOutlet>
-         </IonReactRouter>
+         <Routes />
       </IonApp>
    );
 };

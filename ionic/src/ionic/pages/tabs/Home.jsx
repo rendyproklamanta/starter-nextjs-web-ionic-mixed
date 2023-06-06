@@ -14,7 +14,6 @@ import {
    IonImg,
    IonAvatar,
    IonItem,
-   IonList,
    IonLabel,
    IonText,
    IonBadge,
@@ -22,10 +21,6 @@ import {
    IonRow,
    IonCol,
    IonCard,
-   IonCardHeader,
-   IonCardTitle,
-   IonCardSubtitle,
-   IonCardContent,
 } from '@ionic/react';
 import Notifications from '../Notifications';
 import { useState } from 'react';
@@ -105,70 +100,63 @@ const Home = () => {
                   </IonLabel>
                   <IonLabel slot="end" className='flex flex-col items-center'>
                      <IonText color="medium">
-                        <div class="text-xs">12:20 PM</div>
+                        <div className="text-xs">12:20 PM</div>
                      </IonText>
                      <IonBadge color="primary" className='rounded-full text-[10px] mt-1'>22</IonBadge>
                   </IonLabel>
                </IonItem>
 
                <IonGrid className="max-w-xl mx-auto mb-5">
-                  <IonRow className='-ml-2 -mr-2'>
-                     <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
-                        <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
+                  <IonText>
+                     <h6 className='font-bold'>Menu</h6>
+                  </IonText>
+                  <IonRow className='-ml-3 -mr-3'>
+                     <IonCol size="3" size-sm="2" className='flex flex-col justify-center'>
+                        <IonCard className='m-1 p-3 rounded-xl'>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" />
                         </IonCard>
                         <IonText >
-                           <p className='text-center mt-1 text-xs'>
+                           <p className='text-center mt-1 text-xs font-thin'>
                               Lorem
                            </p>
                         </IonText>
                      </IonCol>
-                     <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
-                        <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
+                     <IonCol size="3" size-sm="2" className='flex flex-col justify-center'>
+                        <IonCard className='m-1 p-3 rounded-xl'>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/732/732200.png" />
                         </IonCard>
                         <IonText >
-                           <p className='text-center mt-1 text-xs'>
+                           <p className='text-center mt-1 text-xs font-thin'>
                               Lorem
                            </p>
                         </IonText>
                      </IonCol>
-                     <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
-                        <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
+                     <IonCol size="3" size-sm="2" className='flex flex-col justify-center'>
+                        <IonCard className='m-1 p-3 rounded-xl'>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/733/733547.png" />
                         </IonCard>
                         <IonText >
-                           <p className='text-center mt-1 text-xs'>
+                           <p className='text-center mt-1 text-xs font-thin'>
                               Lorem
                            </p>
                         </IonText>
                      </IonCol>
-                     <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
-                        <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
+                     <IonCol size="3" size-sm="2" className='flex flex-col justify-center'>
+                        <IonCard className='m-1 p-3 rounded-xl'>
+                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/4379/4379862.png" />
                         </IonCard>
                         <IonText >
-                           <p className='text-center mt-1 text-xs'>
+                           <p className='text-center mt-1 text-xs font-thin'>
                               Lorem
                            </p>
                         </IonText>
                      </IonCol>
-                     <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
-                        <IonCard className='m-1 p-2 rounded-xl'>
+                     <IonCol size="3" size-sm="2" className='flex flex-col justify-center'>
+                        <IonCard className='m-1 p-3 rounded-xl'>
                            <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
                         </IonCard>
                         <IonText >
-                           <p className='text-center mt-1 text-xs'>
-                              Lorem
-                           </p>
-                        </IonText>
-                     </IonCol>
-                     <IonCol size="2" size-sm="2" className='p-0 flex flex-col justify-center'>
-                        <IonCard className='m-1 p-2 rounded-xl'>
-                           <IonImg alt="placeholder" src="https://cdn-icons-png.flaticon.com/512/717/717392.png" />
-                        </IonCard>
-                        <IonText >
-                           <p className='text-center mt-1 text-xs'>
+                           <p className='text-center mt-1 text-xs font-thin'>
                               Lorem
                            </p>
                         </IonText>

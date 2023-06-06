@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { IonHeader, IonContent, IonToolbar, IonTitle, IonPage, IonButton, IonLoading, IonPopover, IonGrid, IonRow, IonCol, IonList, IonListHeader, IonSkeletonText, IonItem, IonThumbnail, IonLabel, IonItemDivider, IonItemGroup, IonActionSheet, IonAlert, IonToast, IonImg } from '@ionic/react';
+import { IonHeader, IonContent, IonToolbar, IonTitle, IonPage, IonButton, IonLoading, IonPopover, IonGrid, IonRow, IonCol, IonList, IonListHeader, IonSkeletonText, IonItem, IonThumbnail, IonLabel, IonItemDivider, IonItemGroup, IonActionSheet, IonAlert, IonToast, IonImg, useIonRouter } from '@ionic/react';
 import { Share } from '@capacitor/share';
 import { Camera, CameraResultType } from '@capacitor/camera';
-import LocalNotification from '../../components/LocalNotifications';
+import LocalNotification from '../../../components/LocalNotifications';
 
 const Contents = () => {
    const [image, setImage] = useState('');
+   const router = useIonRouter();
 
    const takePicture = async () => {
 
@@ -54,8 +55,8 @@ const Contents = () => {
                         <IonCol size="auto">
                            <IonButton id="click-trigger">Popover</IonButton>
                            <IonPopover trigger="click-trigger" triggerAction="click">
-                              <IonContent class="ion-padding">Hello World!</IonContent>
-                              <IonContent class="ion-padding">Hello World!</IonContent>
+                              <IonContent className="ion-padding">Hello World!</IonContent>
+                              <IonContent className="ion-padding">Hello World!</IonContent>
                            </IonPopover>
                         </IonCol>
                         <IonCol size="auto">
@@ -124,6 +125,9 @@ const Contents = () => {
                         </IonCol>
                         <IonCol size="auto">
                            <LocalNotification />
+                        </IonCol>
+                        <IonCol size="auto">
+                           <IonButton onClick={() => router.push('/webview', 'forward')}>Webview</IonButton>
                         </IonCol>
                      </IonRow>
                   </IonGrid>

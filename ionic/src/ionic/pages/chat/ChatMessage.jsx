@@ -41,9 +41,9 @@ const ChatMessage = () => {
                      <IonIcon icon={options} />
                   </IonButton>
                   <IonPopover trigger="popover2" triggerAction="click" className=''>
-                     <IonList class="ion-padding px-5">Hello World!</IonList>
-                     <IonList class="ion-padding px-5">Hello World!</IonList>
-                     <IonList class="ion-padding px-5">Hello World!</IonList>
+                     <IonList className="ion-padding px-5">Hello World!</IonList>
+                     <IonList className="ion-padding px-5">Hello World!</IonList>
+                     <IonList className="ion-padding px-5">Hello World!</IonList>
                   </IonPopover>
                </IonButtons>
             </IonToolbar>

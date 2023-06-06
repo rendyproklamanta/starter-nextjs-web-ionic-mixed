@@ -42,7 +42,7 @@ const ChatList = () => (
                </IonText>
             </IonLabel>
             <IonLabel slot="end" className='flex flex-col items-center'>
-               <div class="text-xs">12:20 PM</div>
+               <div className="text-xs">12:20 PM</div>
                <IonBadge color="primary" className='rounded-full text-[10px] mt-1'>22</IonBadge>
             </IonLabel>
          </IonItem>
