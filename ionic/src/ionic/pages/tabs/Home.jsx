@@ -10,7 +10,6 @@ import {
    IonIcon,
    IonContent,
    IonMenuButton,
-   IonMenu,
    IonImg,
    IonAvatar,
    IonItem,
@@ -28,6 +27,10 @@ import { notificationsOutline } from 'ionicons/icons';
 import { getHomeItems } from '../../../store/selectors';
 import Store from '../../../store';
 import Image from 'next/image';
+import Menu from '../../../components/Menu';
+// import { useSession } from 'next-auth/react';
+// import { useIsLoggedIn } from '../../../hooks/useAuth';
+import { useGetUserInfo } from '../../../hooks/useAuth';
 
 const FeedCard = ({ title, type, text, author, authorAvatar, image }) => (
    <Card className="mb-5 mx-auto">
@@ -51,25 +54,20 @@ const FeedCard = ({ title, type, text, author, authorAvatar, image }) => (
 const Home = () => {
    const homeItems = Store.useState(getHomeItems);
    const [showNotifications, setShowNotifications] = useState(false);
+   // const { data: session } = useSession();
+   const userInfo = useGetUserInfo();
+   // console.log("🚀 ~ file: Home.jsx:64 ~ Home ~ result:", userInfo);
 
    return (
       <>
-         <IonMenu contentId="main-content">
-            <IonHeader>
-               <IonToolbar>
-                  <IonTitle>Menu Content</IonTitle>
-               </IonToolbar>
-            </IonHeader>
-            <IonContent className="ion-padding">This is the menu content.</IonContent>
-         </IonMenu>
-
+         <Menu />
          <IonPage id="main-content">
             <IonHeader>
                <IonToolbar>
                   <IonButtons slot="start">
                      <IonMenuButton></IonMenuButton>
                   </IonButtons>
-                  <IonTitle>Feed</IonTitle>
+                  <IonTitle>Home</IonTitle>
 
                   <IonButtons slot="end">
                      <IonButton onClick={() => setShowNotifications(true)}>
@@ -85,6 +83,13 @@ const Home = () => {
                      <IonTitle size="large">Feed</IonTitle>
                   </IonToolbar>
                </IonHeader>
+
+               {userInfo?.data && (
+                  <IonText className='text-center' >
+                     <h4 className='mt-1 font-bold'>You are Logged In! </h4>
+                     <h5 className='mt-0 mb-5'>Welcome {userInfo.data.name} </h5>
+                  </IonText>
+               )}
 
                <IonItem routerLink='/chat/message' className="list-entry max-w-xl mx-auto mb-3 rounded-xl">
                   <IonAvatar slot="start">

@@ -7,6 +7,7 @@ import Lists from './pages/tabs/Lists';
 import ListDetail from '../components/ListDetail';
 import Settings from './pages/tabs/Settings';
 import Contents from './pages/tabs/Contents';
+import PrivateRoutes from './PrivateRoutes';
 
 const Tabs = () => {
 
@@ -19,7 +20,9 @@ const Tabs = () => {
                   <Route path="/" render={() => <Home />} exact={true} />
                   <Route path="/tabs/lists" render={() => <Lists />} exact={true} />
                   <Route path="/tabs/lists/:listId" render={() => <ListDetail />} exact={true} />
-                  <Route path="/tabs/settings" render={() => <Settings />} exact={true} />
+                  <PrivateRoutes>
+                     <Route path="/tabs/settings" render={() => <Settings />} exact={true} />
+                  </PrivateRoutes>
                   <Route path="/tabs/contents" render={() => <Contents />} exact={true} />
                   <Route path="/tabs/home" render={() => <Home />} exact={true} />
                   <Route path="/tabs" render={() => <Redirect to="/tabs/home" />} exact={true} />

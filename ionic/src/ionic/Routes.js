@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Tabs from './RoutesTab';
 import PageTwo from './pages/PageTwo';
 import Login from './pages/auth/Login';
@@ -11,6 +11,7 @@ import ChatMessage from './pages/chat/ChatMessage';
 import { IonReactRouter } from '@ionic/react-router';
 import { IonRouterOutlet } from '@ionic/react';
 import Webview from './pages/Webview';
+import Pokemon from './pages/Pokemon';
 
 const Routes = () => {
    return (
@@ -23,12 +24,13 @@ const Routes = () => {
                <Route path="/tabs" render={() => <Tabs />} />
                <Route path="/slides" render={() => <Slides />} exact={true} />
                <Route path="/chat" render={() => <ChatList />} exact={true} />
+               <Route path="/pokemon" render={() => <Pokemon />} exact={true} />
                <Route path="/chat/message" render={() => <ChatMessage />} exact={true} />
                <Route path="/pagetwo" render={() => <PageTwo />} />
                <Route path="/webview" render={() => <Webview />} />
-               <Route path="/" render={() => <Redirect to="/tabs/home" />} exact={true} />
+               <Route path="/" render={() => <Login />} exact={true} />
                {/* <Route render={() => <Redirect to="/tabs" />} /> */}
-               <Route render={() => <PageNotFound />} />
+               {/* <Route render={() => <PageNotFound />} /> */}
             </IonRouterOutlet>
          </IonReactRouter>
       </>

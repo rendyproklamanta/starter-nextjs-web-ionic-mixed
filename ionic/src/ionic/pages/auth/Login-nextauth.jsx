@@ -11,25 +11,18 @@ import {
    IonRow,
    IonAlert,
    IonIcon,
-   useIonRouter,
-   // useIonRouter,
 } from "@ionic/react";
 import React, { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { ErrorMessage } from '@hookform/error-message';
 import { personCircle } from "ionicons/icons";
-import { useGetUserInfo } from "../../../hooks/useAuth";
-import Cookies from "js-cookie";
+import { signIn, useSession } from 'next-auth/react';
 import Router from "next/router";
-import { usePostUserLoginMutation } from "../../../store/api/authApi";
 
 const Login = () => {
-   const router = useIonRouter();
-   // const routers = useRouter();
    const [isError, setIsError] = useState(false);
    const [message, setMessage] = useState("");
-   const userInfo = useGetUserInfo();
-   // console.log("🚀 ~ file: Login.jsx:31 ~ Login ~ userInfo:", userInfo)
+   const { data: session } = useSession();
 
    const {
       handleSubmit,
@@ -43,28 +36,20 @@ const Login = () => {
       }
    });
 
-   const [userLogin] = usePostUserLoginMutation();
-
-   const onSubmit = (data) => {
-      userLogin(data).unwrap()
-         .then((res) => {
-            if (!res.success) {
-               setMessage(res.msg);
-               setIsError(true);
-            } else {
-               const cookieTimeOut = 99999;
-               Cookies.set('userinfo', JSON.stringify(res), {
-                  expires: cookieTimeOut,
-               });
-               router.push('/tabs/home');
-               return;
-            }
-         }).then((error) => {
-            console.log("🚀 ~ file: Login.jsx:60 ~ .then ~ error:", error);
+   const onSubmit = async (data) => {
+      const res = await signIn('credentials',
+         {
+            ...data,
+            redirect: false,
          });
+
+      if (res?.error) {
+         setIsError(true);
+         setMessage(res?.error);
+      }
    };
 
-   if (userInfo?.data?.id) {
+   if (session?.user) {
       Router.push('refresh', '/tabs/home');
       return;
    }

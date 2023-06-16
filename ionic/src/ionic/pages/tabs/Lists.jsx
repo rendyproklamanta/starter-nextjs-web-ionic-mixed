@@ -35,29 +35,34 @@ const AllLists = ({ onSelect }) => { // eslint-disable-line no-unused-vars
          <IonItem routerLink={`/chat`}>
             <IonLabel>Chat</IonLabel>
          </IonItem>
+         <IonItem routerLink={`/pokemon`}>
+            <IonLabel>Pokemon</IonLabel>
+         </IonItem>
       </>
    );
 };
 
 const Lists = () => {
    return (
-      <IonPage>
-         <IonHeader translucent={true}>
-            <IonToolbar>
-               <IonTitle>Lists</IonTitle>
-            </IonToolbar>
-         </IonHeader>
-         <IonContent fullscreen={true}>
-            <IonHeader collapse="condense">
+      <>
+         <IonPage>
+            <IonHeader translucent={true}>
                <IonToolbar>
-                  <IonTitle size="large">Lists</IonTitle>
+                  <IonTitle>Lists</IonTitle>
                </IonToolbar>
             </IonHeader>
-            <IonList>
-               <AllLists />
-            </IonList>
-         </IonContent>
-      </IonPage>
+            <IonContent fullscreen={true}>
+               <IonHeader collapse="condense">
+                  <IonToolbar>
+                     <IonTitle size="large">Lists</IonTitle>
+                  </IonToolbar>
+               </IonHeader>
+               <IonList>
+                  <AllLists />
+               </IonList>
+            </IonContent>
+         </IonPage>
+      </>
    );
 };
 

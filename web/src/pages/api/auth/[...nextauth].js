@@ -5,13 +5,19 @@ export default NextAuth({
    providers: [
       CredentialProvider({
          async authorize(credentials) {
-            const response = await fetch(process.env.NEXT_API_URL + 'auth/login/admin',
+            const response = await fetch(process.env.NEXT_API_URL + 'auth/login',
                {
                   method: "POST",
                   body: JSON.stringify(credentials),
                   headers: {
                      "Content-Type": "application/json",
                   },
+
+                  // if using x-www-form-urlencoded
+                  // body: new URLSearchParams(credentials),
+                  // headers: {
+                  //    "Content-Type": "application/x-www-form-urlencoded",
+                  // },
                }
             );
             const data = await response.json();
