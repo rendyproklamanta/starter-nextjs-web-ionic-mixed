@@ -1,32 +1,18 @@
 import React, { useState } from 'react';
 import { IonHeader, IonContent, IonToolbar, IonTitle, IonPage, IonButton, IonLoading, IonPopover, IonGrid, IonRow, IonCol, IonList, IonListHeader, IonSkeletonText, IonItem, IonThumbnail, IonLabel, IonItemDivider, IonItemGroup, IonActionSheet, IonAlert, IonToast, IonImg, useIonRouter } from '@ionic/react';
 import { Share } from '@capacitor/share';
-import { Camera, CameraResultType } from '@capacitor/camera';
 import LocalNotification from '../../../components/LocalNotifications';
+import { takeCamera } from '../../../utils/takeCamera';
 
 const Contents = () => {
    const [image, setImage] = useState('');
    const router = useIonRouter();
 
-   const takePicture = async () => {
-
-      try {
-         const image = await Camera.getPhoto({
-            quality: 90,
-            allowEditing: true,
-            resultType: CameraResultType.Uri
-         });
-         // image.webPath will contain a path that can be set as an image src.
-         // You can access the original file using image.path, which can be
-         // passed to the Filesystem API to read the raw data of the image,
-         // if desired (or pass resultType: CameraResultType.Base64 to getPhoto)
-         var imageUrl = image.webPath;
-         setImage(imageUrl);
-         console.log("🚀 ~ file: Contents.jsx:23 ~ takePicture ~ imageUrl:", imageUrl);
-      } catch (error) {
-         console.log(error);
+   const handleCamera = async () => {
+      const result = await takeCamera();
+      if (result) {
+         setImage(result);
       }
-
    };
 
    return (
@@ -121,7 +107,7 @@ const Contents = () => {
                            ></IonToast>
                         </IonCol>
                         <IonCol size="auto">
-                           <IonButton onClick={takePicture}>Camera</IonButton>
+                           <IonButton onClick={handleCamera}>Camera</IonButton>
                         </IonCol>
                         <IonCol size="auto">
                            <LocalNotification />

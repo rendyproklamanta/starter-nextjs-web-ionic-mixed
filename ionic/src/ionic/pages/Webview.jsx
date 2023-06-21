@@ -19,7 +19,7 @@ const Webview = () => {
          <IonHeader>
             <IonToolbar>
                <IonButtons slot="start">
-                  <IonBackButton defaultHref="/tabs/home" />
+                  <IonBackButton defaultHref="/tabs/contents" />
                </IonButtons>
                <IonTitle>Webview</IonTitle>
             </IonToolbar>

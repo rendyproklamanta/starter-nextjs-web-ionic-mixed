@@ -4,9 +4,11 @@ import counter from './slices/counterSlice';
 import { pokemonApi } from './api/pokemonApi';
 import { usersApi } from './api/usersApi';
 import { authApi } from './api/authApi';
+import auth from './slices/authSlice';
 
 const combinedReducer = combineReducers({
    counter,
+   auth,
    [pokemonApi.reducerPath]: pokemonApi.reducer,
    [usersApi.reducerPath]: usersApi.reducer,
    [authApi.reducerPath]: authApi.reducer,

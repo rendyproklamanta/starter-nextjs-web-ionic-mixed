@@ -2,6 +2,7 @@ import 'animate.css';
 import '../styles/global.css';
 import '../styles/tailwind.css';
 import '../styles/variables.css';
+import '../styles/menu.css';
 import { Provider } from 'react-redux';
 import { wrapper } from '../store/store';
 

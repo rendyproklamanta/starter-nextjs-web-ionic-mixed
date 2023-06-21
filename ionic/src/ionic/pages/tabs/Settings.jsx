@@ -18,13 +18,14 @@ import {
 import Store from '../../../store';
 import * as selectors from '../../../store/selectors';
 import { setSettings } from '../../../store/actions';
-import Menu from '../../../components/Menu';
 import { logOutOutline } from 'ionicons/icons';
-import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { setIsLoggedOut } from '../../../store/slices/authSlice';
 
 const Settings = () => {
    const settings = Store.useState(selectors.getSettings);
    const router = useIonRouter();
+   const dispatch = useDispatch();
 
    // if (!session?.user) {
    //    router.push('/login', 'forward', 'push');
@@ -32,14 +33,13 @@ const Settings = () => {
    // }
 
    const signOut = () => {
-      Cookies.remove('userinfo');
-      router.push('/login', 'forward', 'push');
+      dispatch(setIsLoggedOut());
+      router.push('/login');
    };
 
    return (
       <>
-         <Menu />
-         <IonPage id="main-content">
+         <IonPage>
             <IonHeader>
                <IonToolbar>
                   <IonButtons slot="start">

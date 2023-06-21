@@ -1,25 +1,32 @@
-import Cookies from "js-cookie";
 import { useGetTokenDataQuery } from "../store/api/authApi";
+import { useSelector } from "react-redux";
+
+const useIsLoggedIn = () => {
+   const userInfo = useSelector((state) => state.auth.value);
+   // console.log("🚀 ~ file: useAuth.jsx:6 ~ useIsLoggedIn ~ userInfo:", userInfo)
+   if (userInfo) {
+      return true;
+   } else {
+      return false;
+   }
+};
 
 const useGetUserInfo = () => {
-   let token = '';
+   const userInfo = useSelector((state) => state.auth.value);
+   // console.log("🚀 ~ file: useAuth.jsx:11 ~ useGetUserInfo ~ data:", typeof (userInfo));
+   const token = userInfo ? userInfo.token : '';
+   const { data, isLoading } = useGetTokenDataQuery({ token });
 
-   if (Cookies.get('userinfo')) {
-      const userInfo = JSON.parse(Cookies.get('userinfo'));
-      token = userInfo.token;
-   }
-   const result = useGetTokenDataQuery({ token });
-   return result;
+   return { data, isLoading };
 };
 
 const useGetToken = () => {
-   let token = '';
-
-   if (Cookies.get('userinfo')) {
-      const userInfo = JSON.parse(Cookies.get('userinfo'));
-      token = userInfo.token;
+   const userInfo = useSelector((state) => state.auth.value);
+   if (userInfo) {
+      return userInfo.token;
+   } else {
+      return false;
    }
-   return token;
 };
 
-export { useGetUserInfo, useGetToken };
+export { useIsLoggedIn, useGetUserInfo, useGetToken };

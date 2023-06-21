@@ -23,10 +23,10 @@
     "@capacitor/share": "^4.1.1",
     "@capacitor/status-bar": "^4.1.1",
     "@hookform/error-message": "^2.0.1",
-    "@ionic/core": "7",
+    "@ionic/core": "7.0.0",
     "@ionic/pwa-elements": "^3.1.1",
-    "@ionic/react": "7",
-    "@ionic/react-router": "7",
+    "@ionic/react": "7.0.0",
+    "@ionic/react-router": "7.0.0",
     "@next/codemod": "^13.2.4",
     "@reduxjs/toolkit": "^1.9.5",
     "animate.css": "^4.1.1",
@@ -41,10 +41,12 @@
     "react-hook-form": "^7.44.3",
     "react-icons": "^4.8.0",
     "react-redux": "^8.1.0",
-    "react-router-dom": "^5.2.0",
+    "react-router": "5.3.4",
+    "react-router-dom": "5.3.4",
     "rimraf": "^4.4.0",
     "sass": "^1.60.0",
-    "swiper": "^9.2.0"
+    "swiper": "^9.2.0",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
     "@capacitor/cli": "^4.7.1",

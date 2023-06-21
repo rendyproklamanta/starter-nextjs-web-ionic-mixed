@@ -35,7 +35,7 @@ const AllLists = ({ onSelect }) => { // eslint-disable-line no-unused-vars
          <IonItem routerLink={`/chat`}>
             <IonLabel>Chat</IonLabel>
          </IonItem>
-         <IonItem routerLink={`/pokemon`}>
+         <IonItem routerLink={`/pokemon`} detail={false} key={'pokemon'}>
             <IonLabel>Pokemon</IonLabel>
          </IonItem>
       </>

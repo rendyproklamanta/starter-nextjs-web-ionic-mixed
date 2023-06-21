@@ -22,12 +22,11 @@ import {
    IonCard,
 } from '@ionic/react';
 import Notifications from '../Notifications';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { notificationsOutline } from 'ionicons/icons';
 import { getHomeItems } from '../../../store/selectors';
 import Store from '../../../store';
 import Image from 'next/image';
-import Menu from '../../../components/Menu';
 // import { useSession } from 'next-auth/react';
 // import { useIsLoggedIn } from '../../../hooks/useAuth';
 import { useGetUserInfo } from '../../../hooks/useAuth';
@@ -55,13 +54,20 @@ const Home = () => {
    const homeItems = Store.useState(getHomeItems);
    const [showNotifications, setShowNotifications] = useState(false);
    // const { data: session } = useSession();
-   const userInfo = useGetUserInfo();
-   // console.log("🚀 ~ file: Home.jsx:64 ~ Home ~ result:", userInfo);
+   const [user, setUser] = useState('');
+   const { data: userInfo, isLoading } = useGetUserInfo();
+   // console.log("🚀 ~ file: Home.jsx:64 ~ Home ~ result:", isError);
+
+   useEffect(() => {
+      if (userInfo?.id) {
+         setUser(userInfo);
+      }
+   }, [isLoading, userInfo]);
+
 
    return (
       <>
-         <Menu />
-         <IonPage id="main-content">
+         <IonPage>
             <IonHeader>
                <IonToolbar>
                   <IonButtons slot="start">
@@ -84,10 +90,10 @@ const Home = () => {
                   </IonToolbar>
                </IonHeader>
 
-               {userInfo?.data && (
+               {user?.id && (
                   <IonText className='text-center' >
                      <h4 className='mt-1 font-bold'>You are Logged In! </h4>
-                     <h5 className='mt-0 mb-5'>Welcome {userInfo.data.name} </h5>
+                     <h5 className='mt-0 mb-5'>Welcome {userInfo.name} </h5>
                   </IonText>
                )}
 
