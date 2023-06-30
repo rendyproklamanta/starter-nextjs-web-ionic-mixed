@@ -18,7 +18,7 @@ const SsrWrapper = (props) => {
 
    useEffect(() => {
       if (page < 1) setPage(1);
-      router.push('reactquery/ssr?page=' + page);
+      router.push('/reactquery/ssr?page=' + page);
    }, [page, router]);
 
 

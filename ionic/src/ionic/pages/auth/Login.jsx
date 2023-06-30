@@ -12,6 +12,8 @@ import {
    IonAlert,
    IonIcon,
    useIonRouter,
+   IonLabel,
+   IonFooter,
    // useIonRouter,
 } from "@ionic/react";
 import React, { useEffect, useState } from "react";
@@ -152,6 +154,11 @@ const Login = () => {
                   </IonRow>
                </form>
             </IonContent>
+            <IonFooter className="text-center py-4 ion-no-border">
+               <IonButton color="light" routerLink={`/tabs/home`} detail={false}>
+                  <IonLabel>{'Go To Home >>'}</IonLabel>
+               </IonButton>
+            </IonFooter>
          </IonPage>
       );
    }

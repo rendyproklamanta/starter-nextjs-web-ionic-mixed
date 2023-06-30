@@ -12,13 +12,13 @@ import {
 } from "@ionic/react";
 import { Route, Redirect } from "react-router";
 import { informationCircle, home, cog, camera, list } from "ionicons/icons";
-import About from "./About";
-import Lists from "./Lists";
-import Home from "./Home";
-import Settings from "./Settings";
-import ListDetail from "../../../components/ListDetail";
-import Contents from "./Contents";
-import { takeCamera } from "../../../utils/takeCamera";
+import About from "../pages/tabs/About";
+import Lists from "../pages/tabs/Lists";
+import Home from "../pages/tabs/Home";
+import Settings from "../pages/tabs/Settings";
+import ListDetail from "../../components/ListDetail";
+import Contents from "../pages/tabs/Contents";
+import { takeCamera } from "../../utils/takeCamera";
 
 const Tabs = () => {
    const [image, setImage] = useState('');

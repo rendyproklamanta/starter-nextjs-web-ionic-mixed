@@ -17,7 +17,7 @@ import '@ionic/react/css/display.css';
 import { IonApp, setupIonicReact } from '@ionic/react';
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-import Routes from './Routes';
+import Routes from './routes/Routes';
 
 setupIonicReact({});
 
